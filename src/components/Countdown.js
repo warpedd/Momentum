@@ -1,7 +1,6 @@
 import React, {useState, useEffect, useRef} from 'react'
 import PropTypes from 'prop-types'
 import Button from './Button'
-import '../styles/Countdown.css'
 
 const STATUS = {
   STARTED: 'Started',

@@ -27,14 +27,14 @@
 
 import React from 'react';
 import Navbar from "./components/Navbar";
-import CountdownTimer from './components/Countdown';
+import Pomodoro from './components/Pomodoro';
 
 
 const App = () => {
     return (
         <React.Fragment>
             <Navbar/>
-            <CountdownTimer />
+            <Pomodoro />
         </React.Fragment>
     );
   }

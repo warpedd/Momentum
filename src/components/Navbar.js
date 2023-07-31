@@ -15,6 +15,7 @@ function Navbar() {
             <nav ref={navRef}>
                     <a href="/tracker">Tracker</a>
                     <a href="/music">Music</a>
+                    <a href="/Setting">Setting</a>
                     <a href="/login">Login</a>
                 <button className="nav-btn nav-close-btn" onClick={showNavbar}>
                     <FaTimes/>

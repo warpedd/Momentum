@@ -32,6 +32,8 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Tracker from "./pages/Tracker";
 import Music from "./pages/Music";
 import {Login} from "./pages/Login";
+import Setting from "./pages/Setting";
+
 
 const App = () => {
     return (
@@ -46,12 +48,16 @@ const App = () => {
                     <Route path="/tracker" Component={Tracker} exact>
                         <Tracker/>
                     </Route>
-                    <Route path="/music" Component={Music} exact>
-                        <Music/>
-                    </Route>
                     <Route path="/login" Component={Login} exact>
                         <Login/>
                     </Route>
+                    <Route path="/setting" Component={Setting} exact>
+                        <Setting/>
+                    </Route>
+                    
+        
+    
+
                 </Switch>
             </Router>
         </React.Fragment>

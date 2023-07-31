@@ -38,8 +38,11 @@ const App = () => {
         <React.Fragment>
             <Router>
                 <Navbar/>
-                <Pomodoro />
+                {/* <Pomodoro /> */}
                 <Switch>
+                    <Route path="/" exact>
+                        <Pomodoro />
+                    </Route>
                     <Route path="/tracker" Component={Tracker} exact>
                         <Tracker/>
                     </Route>

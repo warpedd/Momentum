@@ -11,11 +11,11 @@ function Navbar() {
 
     return(
         <header>
-            <h3>Momentum</h3>
+            <a href="/"><h3>Momentum</h3></a>
             <nav ref={navRef}>
-                <a href="/#">Tracker</a>
-                <a href="/#">Music</a>
-                <a href="/#">Login</a>
+                    <a href="/tracker">Tracker</a>
+                    <a href="/music">Music</a>
+                    <a href="/login">Login</a>
                 <button className="nav-btn nav-close-btn" onClick={showNavbar}>
                     <FaTimes/>
                 </button>

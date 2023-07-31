@@ -1,4 +1,3 @@
-
 * {
     padding: 0;
 	margin: 0;
@@ -27,6 +26,11 @@ nav a {
 	color: var(--textColor);
 	text-decoration: none;
 }
+
+nav{
+    padding-left: 73%;
+}
+
 
 nav a:hover{
     color: var(--secondaryColor);
@@ -82,5 +86,9 @@ header div, nav {
 
     nav a {
         font-size: 1.5rem;
+    }
+
+    nav{
+        padding: 0;
     }
 }

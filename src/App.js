@@ -28,13 +28,29 @@
 import React from 'react';
 import Navbar from "./components/Navbar";
 import Pomodoro from './components/Pomodoro';
-
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import Tracker from "./pages/Tracker";
+import Music from "./pages/Music";
+import {Login} from "./pages/Login";
 
 const App = () => {
     return (
         <React.Fragment>
-            <Navbar/>
-            <Pomodoro />
+            <Router>
+                <Navbar/>
+                <Pomodoro />
+                <Switch>
+                    <Route path="/tracker" Component={Tracker} exact>
+                        <Tracker/>
+                    </Route>
+                    <Route path="/music" Component={Music} exact>
+                        <Music/>
+                    </Route>
+                    <Route path="/login" Component={Login} exact>
+                        <Login/>
+                    </Route>
+                </Switch>
+            </Router>
         </React.Fragment>
     );
   }

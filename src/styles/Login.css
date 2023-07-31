@@ -1,0 +1,46 @@
+
+.auth-form-container{
+    margin: auto;
+    padding: 5rem;
+    margin-top: 40px;
+    border: 2px solid #e88a0f;
+    width: 50%;
+}
+
+.auth-form-container, .login-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h2{
+    border:1px solid black;
+    font-size: 24px;
+}
+
+label {
+    text-align: left;
+}
+
+input {
+    border:1px solid black;
+    margin: 0.5rem 0;
+}
+
+button {
+    border: none;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    color: var(--textColor);
+    cursor: pointer;
+}
+
+.login-btn{
+    width: 100%;
+}
+
+.link-btn{
+    background: none;
+    text-decoration: underline;
+}

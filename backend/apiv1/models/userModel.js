@@ -1,4 +1,4 @@
-const mongoose = reuqire('mongoose');
+const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 
 const Schema = mongoose.Schema; 
@@ -9,7 +9,7 @@ const UserSchema = new Schema({
         type: String, 
         required: true
     }, 
-    username: {
+    email: {
         type: String, 
         required: true,  
         index: { unique: true }
@@ -32,7 +32,7 @@ UserSchema.pre('save', function (next) {
     }
     
     // generate a salt
-    bycrypt.genSalt(SALT_WORK_FACTOR, function(err , salt) {
+    bcrypt.genSalt(SALT_WORK_FACTOR, function(err , salt) {
         if (err) return next(err);
 
         //hash the password using new salt

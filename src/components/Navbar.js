@@ -12,18 +12,18 @@ import "../styles/Navbar.css";
     };
 
     return(
-        <header>
+        <header className="navbar-header">
             <a href="/"><h3>Momentum</h3></a>
             <nav ref={navRef}>
                     <a href="/tracker">Tracker</a>
                     <a href="/music">Music</a>
                     <a href="#" onClick={onSettingsClick}>Setting</a>
                     <a href="/login">Login</a>
-                <button className="nav-btn nav-close-btn" onClick={showNavbar}>
+                <button className="nav-button-generic nav-close-button-generic" onClick={showNavbar}>
                     <FaTimes/>
                 </button>
             </nav>
-            <button className="nav-btn" onClick = {showNavbar}>
+            <button className="nav-button-generic" onClick = {showNavbar}>
                     <FaBars/>
             </button>
         </header>

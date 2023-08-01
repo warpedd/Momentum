@@ -1,31 +1,4 @@
-// import React from 'react';
-// import logo from './logo.svg';
-// import './App.css';
-
-// function App() {
-//   return (
-//     <div className="App">
-//       <header className="App-header">
-//         <img src={logo} className="App-logo" alt="logo" />
-//         <p>
-//           Edit <code>src/App.js</code> and save to reload.
-//         </p>
-//         <a
-//           className="App-link"
-//           href="https://reactjs.org"
-//           target="_blank"
-//           rel="noopener noreferrer"
-//         >
-//           Learn React
-//         </a>
-//       </header>
-//     </div>
-//   );
-// }
-
-// export default App;
-
-// import React from 'react';
+// Component Imports
 import React, { useState } from "react";
 import Navbar from "./components/Navbar";
 import Pomodoro from './components/Pomodoro';
@@ -35,9 +8,26 @@ import Music from "./pages/Music";
 import Setting from "./pages/Setting";
 import { Login } from "./pages/Login";
 import { Register } from "./pages/Register";
+import CreateTask from './components/CreateTask';
+import TaskList from "./components/TaskList";
+import Button from './components/Button';
 
+// Style imports
+import './styles/ButtonGeneric.css'
+import './styles/Tasks.css'
 
 const App = () => {
+    // Top level state and functions for tasks
+    const [showAddTask, setShowAddTask] = useState(false)
+    const [tasks, setTasks] = useState([]);
+    
+    const createTask = (task) => {
+        const id = Math.floor(Math.random() * 10000) + 1
+        const newTask = { id, ...task }
+        setTasks([...tasks, newTask])
+    }
+    
+    // Top level state and functions for settings
     const [showSettings, setShowSettings] = useState(false);
   
     const handleSettingsClick = () => {
@@ -54,6 +44,7 @@ const App = () => {
       setCurrentForm(formName);
     }
 
+    // Render method for App component
     return (
         <React.Fragment>
             <Router>
@@ -61,6 +52,19 @@ const App = () => {
                 <Switch>
                     <Route path="/" exact>
                         <Pomodoro />
+                            <div className='task-container'>
+                                <header className='task-list-header'>
+                                    <h3>Tasks</h3>
+                                    <Button
+                                        color={'green'}
+                                        text={'Add'}
+                                        onClick={() => setShowAddTask(!showAddTask)}
+                                    />
+                                    
+                                </header>
+                                {showAddTask && <CreateTask onAdd={createTask} />}
+                                <TaskList tasks={tasks} />                        
+                        </div>
                     </Route>
                     <Route path="/tracker" Component={Tracker} exact>
                         <Tracker/>

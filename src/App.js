@@ -36,7 +36,18 @@ import Setting from "./pages/Setting";
 import { Login } from "./pages/Login";
 import { Register } from "./pages/Register";
 
+
 const App = () => {
+    const [showSettings, setShowSettings] = useState(false);
+  
+    const handleSettingsClick = () => {
+      setShowSettings(true);
+    };
+  
+    const handleCloseSettings = () => {
+      setShowSettings(false);
+    };  
+
     const [currentForm, setCurrentForm] = useState('login');
 
     const toggleForm = (formName) => {
@@ -46,7 +57,7 @@ const App = () => {
     return (
         <React.Fragment>
             <Router>
-                <Navbar/>
+                <Navbar onSettingsClick={handleSettingsClick} />
                 <Switch>
                     <Route path="/" exact>
                         <Pomodoro />
@@ -62,14 +73,14 @@ const App = () => {
                             currentForm === "login" ? <Login onFormSwitch={toggleForm} /> : <Register onFormSwitch={toggleForm} />
                         }
                     </Route>
-                    <Route path="/setting" Component={Setting} exact>
-                        <Setting/>
+                    <Route path="/settings">
+                        <Setting closeSettings={handleCloseSettings} />
                     </Route>
                 </Switch>
             </Router>
-        </React.Fragment>
-        
+             {showSettings && <Setting closeSettings={handleCloseSettings} />}
+         </React.Fragment>
     );
-  }
+  };
   
   export default App;

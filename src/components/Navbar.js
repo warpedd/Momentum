@@ -2,8 +2,10 @@ import { useRef } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
 import "../styles/Navbar.css";
 
-function Navbar() {
-    const navRef = useRef();
+
+    function Navbar({ onSettingsClick }) {
+        const navRef = useRef();
+      
     
     const showNavbar = () => {
         navRef.current.classList.toggle("responsive_nav");
@@ -15,7 +17,7 @@ function Navbar() {
             <nav ref={navRef}>
                     <a href="/tracker">Tracker</a>
                     <a href="/music">Music</a>
-                    <a href="/Setting">Setting</a>
+                    <a href="#" onClick={onSettingsClick}>Setting</a>
                     <a href="/login">Login</a>
                 <button className="nav-btn nav-close-btn" onClick={showNavbar}>
                     <FaTimes/>

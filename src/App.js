@@ -25,22 +25,28 @@
 
 // export default App;
 
-import React from 'react';
+// import React from 'react';
+import React, { useState } from "react";
 import Navbar from "./components/Navbar";
 import Pomodoro from './components/Pomodoro';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Tracker from "./pages/Tracker";
 import Music from "./pages/Music";
-import {Login} from "./pages/Login";
 import Setting from "./pages/Setting";
-
+import { Login } from "./pages/Login";
+import { Register } from "./pages/Register";
 
 const App = () => {
+    const [currentForm, setCurrentForm] = useState('login');
+
+    const toggleForm = (formName) => {
+      setCurrentForm(formName);
+    }
+
     return (
         <React.Fragment>
             <Router>
                 <Navbar/>
-                {/* <Pomodoro /> */}
                 <Switch>
                     <Route path="/" exact>
                         <Pomodoro />
@@ -48,19 +54,21 @@ const App = () => {
                     <Route path="/tracker" Component={Tracker} exact>
                         <Tracker/>
                     </Route>
+                    <Route path="/music" Component={Music} exact>
+                        <Music/>
+                    </Route>
                     <Route path="/login" Component={Login} exact>
-                        <Login/>
+                        {
+                            currentForm === "login" ? <Login onFormSwitch={toggleForm} /> : <Register onFormSwitch={toggleForm} />
+                        }
                     </Route>
                     <Route path="/setting" Component={Setting} exact>
                         <Setting/>
                     </Route>
-                    
-        
-    
-
                 </Switch>
             </Router>
         </React.Fragment>
+        
     );
   }
   

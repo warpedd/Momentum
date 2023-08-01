@@ -1,4 +1,4 @@
-.login-box {
+.register-box {
     text-align: center;
     border: 1px solid #363949;
     padding: 20px;
@@ -13,7 +13,7 @@
     margin-top: 40px;
 }
 
-.login-form {
+.register-form {
     display: flex;
     flex-direction: column;
     width: 70%;
@@ -35,7 +35,7 @@ input {
     margin: 0.5rem 0;
 }
 
-.login-btn{
+.register-btn{
     background-color: #90B6E4;
     color:  white;
     border-radius: 10px;
@@ -48,7 +48,7 @@ input {
     margin-right: auto;
 }
 
-.login-link-btn{
+.register-link-btn{
     text-decoration: underline;
     background-color: #90B6E4;
     color:  white;
@@ -56,5 +56,5 @@ input {
     padding: 20px;
     border: none;
     cursor: pointer;
-    margin-top: 30px;
+    margin-top: 25px;
 }

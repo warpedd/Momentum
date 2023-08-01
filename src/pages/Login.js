@@ -9,9 +9,9 @@ export const Login = (props) => {
         e.preventDefault();
         console.log(email);
     }
-
+  
     return (
-        <div className="auth-form-container">
+        <div className="login-box">
             <h2>Login</h2>
             <form className="login-form" onSubmit={handleSubmit}>
                 <label htmlFor="email">Email</label>
@@ -20,7 +20,7 @@ export const Login = (props) => {
                 <input value={pass} onChange={(e) => setPass(e.target.value)} type="password" placeholder="Enter password" id="password" name="password" />
                 <button className="login-btn" type="submit">Log In</button>
             </form>
-            <button className="link-btn" onClick={() => props.onFormSwitch('register')}>Don't have an account? Register here.</button>
+            <button className="login-link-btn" onClick={() => props.onFormSwitch('register')}>Don't have an account? Register here.</button>
         </div>
     )
 }

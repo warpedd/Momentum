@@ -1,0 +1,40 @@
+.Tracker {
+	width: 100%;
+	max-width: 600px;
+	margin: 0 auto;
+	padding: 20px;
+	box-sizing: border-box;
+}
+
+.Tracker h1 {
+	text-align: center;
+}
+
+.Tracker input[type="text"] {
+	width: 100%;
+	padding: 10px;
+	margin-bottom: 10px;
+	box-sizing: border-box;
+}
+
+.Tracker button {
+	padding: 10px 20px;
+	background-color: lightblue;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	display: block;
+	margin: 0 auto;
+}
+
+.Tracker ul {
+	list-style-type: none;
+	padding: 0;
+}
+
+.Tracker li {
+	background-color: white;
+	margin-bottom: 10px;
+	padding: 10px;
+	border-radius: 5px;
+}

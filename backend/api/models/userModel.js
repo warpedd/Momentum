@@ -1,4 +1,3 @@
-require('dotenv').config();
 const mongoose = reuqire('mongoose');
 const bcrypt = require('bcrypt');
 

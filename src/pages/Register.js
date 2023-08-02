@@ -6,10 +6,43 @@ export const Register = (props) => {
     const [pass, setPass] = useState('');
     const [name, setName] = useState('');
 
-    const handleSubmit = (e) => {
+    // const handleSubmit = (e) => {
+    //     e.preventDefault();
+    //     console.log(email);
+    // }
+
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log(email);
-    }
+    
+        try {
+          // Send the user data to the backend API using Fetch
+          const response = await fetch("http://localhost:5000/apiv1/users", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              name: name,
+              email: email,
+              password: pass,
+            }),
+          });
+    
+          // Convert the response to JSON
+          const data = await response.json();
+    
+          // Handle the response from the backend
+          console.log("New user created:", data);
+    
+          // Reset the form after successful registration
+          setName("");
+          setEmail("");
+          setPass("");
+        } catch (error) {
+          // Handle errors, e.g., display an error message
+          console.error("Failed to create user:", error);
+        }
+    };
 
     return (
         <div className="register-box">

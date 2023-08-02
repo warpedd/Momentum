@@ -1,32 +1,19 @@
 // Component Imports
 import React, { useState } from "react";
 import Navbar from "./components/Navbar";
-import Pomodoro from './components/Pomodoro';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import Home from "./pages/home";
 import Tracker from "./pages/Tracker";
 import Music from "./pages/Music";
 import Setting from "./pages/Setting";
 import { Login } from "./pages/Login";
 import { Register } from "./pages/Register";
-import CreateTask from './components/CreateTask';
-import TaskList from "./components/TaskList";
-import Button from './components/Button';
 
 // Style imports
 import './styles/ButtonGeneric.css'
 import './styles/Tasks.css'
 
 const App = () => {
-    // Top level state and functions for tasks
-    const [showAddTask, setShowAddTask] = useState(false)
-    const [tasks, setTasks] = useState([]);
-    
-    const createTask = (task) => {
-        const id = Math.floor(Math.random() * 10000) + 1
-        const newTask = { id, ...task }
-        setTasks([...tasks, newTask])
-    }
-    
     // Top level state and functions for settings
     const [showSettings, setShowSettings] = useState(false);
   
@@ -50,21 +37,8 @@ const App = () => {
             <Router>
                 <Navbar onSettingsClick={handleSettingsClick} />
                 <Switch>
-                    <Route path="/" exact>
-                        <Pomodoro />
-                            <div className='task-container'>
-                                <header className='task-list-header'>
-                                    <h3>Tasks</h3>
-                                    <Button
-                                        color={'green'}
-                                        text={'Add'}
-                                        onClick={() => setShowAddTask(!showAddTask)}
-                                    />
-                                    
-                                </header>
-                                {showAddTask && <CreateTask onAdd={createTask} />}
-                                <TaskList tasks={tasks} />                        
-                        </div>
+                    <Route path="/" compnent={Home} exact>
+                        <Home/>
                     </Route>
                     <Route path="/tracker" Component={Tracker} exact>
                         <Tracker/>

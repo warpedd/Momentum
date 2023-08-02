@@ -4,6 +4,24 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+const firebaseConfig = {
+  apiKey: "AIzaSyDZ39FTlyWYzhACLcoha9HXC3kmc1D9QCQ",
+  authDomain: "momentum-93d46.firebaseapp.com",
+  projectId: "momentum-93d46",
+  storageBucket: "momentum-93d46.appspot.com",
+  messagingSenderId: "233229829603",
+  appId: "1:233229829603:web:6d77750b389190f77f4cd6"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>

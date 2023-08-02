@@ -1,3 +1,15 @@
+# Instructions for Launching the Dev Instance Locally
+
+1. Clone the repository with `git clone`
+2. In the development directory, execute `npm start` to install the required packages
+3. Execute `npm start` to launch the local development app
+
+## Killing a running development server
+
+In another shell, execute command `npx kill-port 3000` to kill the development instance. Another method is the find the process using port 3000 and then kill it like you would any other process.
+
+---------------------------------------
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

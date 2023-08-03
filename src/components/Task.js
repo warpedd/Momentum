@@ -7,7 +7,7 @@ const Task = ({task}) => {
     <div
       className="task"    >
       <h3>
-        {task.textName}{' '}
+        {task.taskName}{' '}
       </h3>
       <p>Priority: {task.priority}</p>
       <p>Est. Pomodoros: {task.estPoms}</p>

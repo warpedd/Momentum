@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+//import { useParams } from 'react-router-dom';
+import axios from 'axios';
 import Pomodoro from '../components/Pomodoro';
 import CreateTask from '../components/CreateTask';
 import TaskList from "../components/TaskList";
@@ -9,14 +11,18 @@ import useUser from '../hooks/useUser'
 function Home() {
     // Top level state and functions for tasks
     const [showAddTask, setShowAddTask] = useState(false)
-    const [tasks, setTasks] = useState([]);
+    const [ tasks, setTasks] = useState([]);
     const { user, isLoading } = useUser();
 
-    const createTask = (task) => {
-        const id = Math.floor(Math.random() * 10000) + 1;
-        const newTask = { id, ...task };
-        setTasks([...tasks, newTask]);
+    const loadTaskInfo = async () => {
+        const response = await axios.get("http://localhost:5000/apiv1/tasks/");
+        const newTaskList = response.data;
+        setTasks(newTaskList);
     }
+
+    useEffect(() => {
+        loadTaskInfo();
+    }, []);
 
     return (
         <>
@@ -35,7 +41,7 @@ function Home() {
                             text={'Login to add tasks'}
                             />} 
                 </header>
-                {showAddTask && <CreateTask onAdd={createTask} />}
+                {showAddTask && <CreateTask/>}
                 <TaskList tasks={tasks} />                        
             </div>
         </>

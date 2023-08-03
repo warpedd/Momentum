@@ -1,37 +1,49 @@
 import { useState } from 'react'
+import axios from 'axios';
 
-const CreateTask = ({ onAdd }) => {
-    const [textName, setTextName] = useState('')
+const CreateTask = ({ onTaskListUpdated }) => {
+    const [taskName, setTaskName] = useState('')
     const [priority, setPriority] = useState(99)
     const [estPoms, setEstPoms] = useState(1)
     const [notes, setNotes] = useState('')
     
-    const onSubmit = (e) => {
-      e.preventDefault()
-  
-      if (!textName) {
-        alert('Please provide a task name')
-        return
-      }
-  
-      onAdd({ textName, priority, estPoms, notes })
-  
-      // Clear forms following submit
-      setTextName('')
-      setPriority(99)
-      setEstPoms(0)
-      setNotes('')
+    const addTask = async (e) => {
+        e.preventDefault()
+
+        try {
+            if (!taskName) {
+                alert('Please provide a task name');
+                return;
+            } else {
+                axios.post(`http://localhost:5000/apiv1/tasks/`, {
+                    taskName: taskName, 
+                    priority: priority, 
+                    estimatedPomodoros: estPoms, 
+                    notes: notes
+                });
+                onTaskListUpdated();
+
+                // Clear forms following submit
+                setTaskName('');
+                setPriority(99);
+                setEstPoms(1);
+                setNotes('');
+            }
+        } catch (error) {
+            // Handle the error here
+            console.error('Error adding task:', error);
+        }
     }
   
     return (
-      <form className='add-task' onSubmit={onSubmit}>
+      <form className='add-task' onSubmit={addTask}>
         <div className='form-input'>
           <label>Name</label>
           <input
             type='text'
             placeholder='Task Name'
-            value={textName}
-            onChange={(e) => setTextName(e.target.value)}
+            value={taskName}
+            onChange={(e) => setTaskName(e.target.value)}
           />
         </div>
         <div className='form-input'>

@@ -10,8 +10,10 @@ const apiLimiter = rateLimit({
 
 // Get file paths for the routers
 let userRouter = require("./routes/userRoutes");
+let taskRouter = require("./routes/taskRoutes");
 
 // Set relative paths for the routers
 apiv1.use('/users', apiLimiter, userRouter);
+apiv1.use('/tasks', apiLimiter, taskRouter);
 
 module.exports = apiv1; 

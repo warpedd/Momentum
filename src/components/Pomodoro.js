@@ -9,7 +9,7 @@ const DisplayTimer = {
     LONGBREAK: 'Long Break',
 }
 
-const Pomodoro = () => {
+const Pomodoro = ({pomodoroDur, shortBreakDur, longBreakDur}) => {
     const[display, setDisplay] = useState(DisplayTimer.POMODORO)
 
     const switchPomodoro = () => {
@@ -47,9 +47,9 @@ const Pomodoro = () => {
                 />
             </div>
     
-            { (display === DisplayTimer.POMODORO) && <CountdownTimer /> }
-            { (display === DisplayTimer.SHORTBREAK) && <CountdownTimer duration={300} /> }
-            { (display === DisplayTimer.LONGBREAK) && <CountdownTimer duration={900}/> }
+            { (display === DisplayTimer.POMODORO) && <CountdownTimer duration={pomodoroDur * 60}/> }
+            { (display === DisplayTimer.SHORTBREAK) && <CountdownTimer duration={shortBreakDur * 60} /> }
+            { (display === DisplayTimer.LONGBREAK) && <CountdownTimer duration={longBreakDur * 60}/> }
             </div>
         </div>
     )

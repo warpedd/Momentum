@@ -1,7 +1,17 @@
 import React, { useEffect, useRef, useState } from "react";
 import "../styles/Setting.css";
 
-const Setting = ({ closeSettings }) => {
+
+const Setting = ( {closeSettings, 
+                   pomodoroDur,   setPomodoroDur,
+                   shortBreakDur,  setShortBreakDur,
+                   longBreakDur,   setLongBreakDur,
+                   autoStartBreak, setAutoStartBreak,
+                   autoSwitchTask, setAutoSwitchTask,
+                   autoStartPomodoro, setAutoStartPomodoro} ) => {
+
+  console.log("Settings")
+
   const SettingLabels = [
     "Auto Start Breaks",
     "Auto Start Pomodoros",
@@ -11,11 +21,8 @@ const Setting = ({ closeSettings }) => {
     "Long Break Interval",
   ];
 
-  const dropdownRef = useRef(null);
 
-  const [pomodoroTimer, setPomodoroTimer] = useState(25);
-  const [shortBreakInterval, setShortBreakInterval] = useState(5);
-  const [longBreakInterval, setLongBreakInterval] = useState(15);
+  const dropdownRef = useRef(null);
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -48,8 +55,8 @@ const Setting = ({ closeSettings }) => {
                 <input
                   type="number"
                   className="interval-input"
-                  value={pomodoroTimer}
-                  onChange={(e) => setPomodoroTimer(e.target.value)}
+                  value={pomodoroDur}
+                  onChange={(e) => setPomodoroDur(e.target.value)}
                 />
                 <span>mins</span>
               </div>
@@ -59,8 +66,8 @@ const Setting = ({ closeSettings }) => {
                 <input
                   type="number"
                   className="interval-input"
-                  value={shortBreakInterval}
-                  onChange={(e) => setShortBreakInterval(e.target.value)}
+                  value={shortBreakDur}
+                  onChange={(e) => setShortBreakDur(e.target.value)}
                 />
                 <span>mins</span>
               </div>
@@ -70,8 +77,8 @@ const Setting = ({ closeSettings }) => {
                 <input
                   type="number"
                   className="interval-input"
-                  value={longBreakInterval}
-                  onChange={(e) => setLongBreakInterval(e.target.value)}
+                  value={longBreakDur}
+                  onChange={(e) => setLongBreakDur(e.target.value)}
                 />
                 <span>mins</span>
               </div>

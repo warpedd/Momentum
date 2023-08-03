@@ -12,9 +12,19 @@ import { Register } from "./pages/Register";
 // Style imports
 import './styles/ButtonGeneric.css'
 import './styles/Tasks.css'
+import { setSelectionRange } from "@testing-library/user-event/dist/utils";
 
 const App = () => {
     // Top level state and functions for settings
+
+    // State for settings - inputs to both settings page and pomodoro
+    const [pomodoroDur, setPomodoroDur] = useState(25);
+    const [shortBreakDur, setShortBreakDur] = useState(5);
+    const [longBreakDur, setLongBreakDur] = useState(15);
+    const [autoStartBreak, setAutoStartBreak] = useState(false);
+    const [autoSwitchTask, setAutoSwitchTasks] = useState(false);
+    const [autoStartPomodoro, setAutoStartPomodoro] = useState(false);
+
     const [showSettings, setShowSettings] = useState(false);
   
     const handleSettingsClick = () => {
@@ -37,8 +47,11 @@ const App = () => {
             <Router>
                 <Navbar onSettingsClick={handleSettingsClick} />
                 <Switch>
-                    <Route path="/" compnent={Home} exact>
-                        <Home/>
+                    <Route path="/" Component={Home} exact>
+                        <Home 
+                            pomodoroDur={pomodoroDur} 
+                            shortBreakDur={shortBreakDur} 
+                            longBreakDur={longBreakDur}/>
                     </Route>
                     <Route path="/tracker" Component={Tracker} exact>
                         <Tracker/>
@@ -52,11 +65,37 @@ const App = () => {
                         }
                     </Route>
                     <Route path="/settings">
-                        <Setting closeSettings={handleCloseSettings} />
+                    <Setting 
+                                closeSettings={handleCloseSettings} 
+                                pomodoroDur={pomodoroDur} 
+                                setPomodoroDur={setPomodoroDur}
+                                shortBreakDur={shortBreakDur} 
+                                setShortBreakDur={setShortBreakDur}
+                                longBreakDur={longBreakDur} 
+                                setLongBreakDur={setLongBreakDur}
+                                autoStartBreak={autoStartBreak} 
+                                setAutoStartBreaks={setAutoStartBreak}
+                                autoSwitchTask={autoSwitchTask} 
+                                setAutoSwitchTasks={setAutoSwitchTasks}
+                                autoStartPomodoro={autoStartPomodoro} 
+                                setAutoStartPomodoro={setAutoStartPomodoro}/>
                     </Route>
                 </Switch>
             </Router>
-             {showSettings && <Setting closeSettings={handleCloseSettings} />}
+             {showSettings && <Setting 
+                                closeSettings={handleCloseSettings} 
+                                pomodoroDur={pomodoroDur} 
+                                setPomodoroDur={setPomodoroDur}
+                                shortBreakDur={shortBreakDur} 
+                                setShortBreakDur={setShortBreakDur}
+                                longBreakDur={longBreakDur} 
+                                setLongBreakDur={setLongBreakDur}
+                                autoStartBreak={autoStartBreak} 
+                                setAutoStartBreaks={setAutoStartBreak}
+                                autoSwitchTask={autoSwitchTask} 
+                                setAutoSwitchTasks={setAutoSwitchTasks}
+                                autoStartPomodoro={autoStartPomodoro} 
+                                setAutoStartPomodoro={setAutoStartPomodoro}/>}
          </React.Fragment>
     );
   };

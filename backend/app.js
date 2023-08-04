@@ -37,6 +37,25 @@ app.use(cors());
 // Use express.json middleware
 app.use(express.json());
 
+// Middleware to process user
+// if a user is logged in, authToken included, 
+// if not, just load basic info without perms that come with being logged in
+app.use(async (req, res, next) => {
+    const { authtoken } = req.headers;
+
+    if (authtoken) {
+        try {
+            req.user = await admin.auth().verifyIdToken(authtoken);
+        } catch (error) {
+            res.status(400).json({ error: "Request for authtoken caused error." });
+        }
+    }
+
+    // in case someone is not logged in but they still make the request
+    req.user = req.user || {};
+    next();
+});
+
 // Mount the routes on the '/apiv1' path
 app.use("/apiv1/", apiv1);
 

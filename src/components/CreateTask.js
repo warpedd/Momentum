@@ -1,11 +1,13 @@
 import { useState } from 'react'
 import axios from 'axios';
+import useUser from '../hooks/useUser'
 
 const CreateTask = ({ onTaskListUpdated }) => {
     const [taskName, setTaskName] = useState('')
     const [priority, setPriority] = useState(99)
     const [estPoms, setEstPoms] = useState(1)
     const [notes, setNotes] = useState('')
+    const { user } = useUser();
     
     const addTask = async (e) => {
         e.preventDefault()
@@ -15,12 +17,15 @@ const CreateTask = ({ onTaskListUpdated }) => {
                 alert('Please provide a task name');
                 return;
             } else {
+                const token = user && await user.getIdToken();
+                const headers = token ? { authtoken: token } : {};
                 axios.post(`http://localhost:5000/apiv1/tasks/`, {
+                    userId: token,
                     taskName: taskName, 
                     priority: priority, 
                     estimatedPomodoros: estPoms, 
                     notes: notes
-                });
+                }, { headers });
                 onTaskListUpdated();
 
                 // Clear forms following submit

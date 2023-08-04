@@ -15,15 +15,17 @@ function Home({ pomodoroDur, shortBreakDur, longBreakDur}) {
     const [ tasks, setTasks] = useState([]);
     const { user, isLoading } = useUser();
 
-    const loadTaskInfo = async () => {
-        const response = await axios.get("http://localhost:5000/apiv1/tasks/");
-        const newTaskList = response.data;
-        setTasks(newTaskList);
-    }
+    // const loadTaskInfo = async () => {
+    //     const token = user && await user.getIdToken();
+    //     const headers = token ? { authtoken: token } : {};
+    //     const response = await axios.get("http://localhost:5000/apiv1/tasks/", { headers });
+    //     const newTaskList = response.data;
+    //     setTasks(newTaskList);
+    // }
 
-    useEffect(() => {
-        loadTaskInfo();
-    }, []);
+    // useEffect(() => {
+    //     loadTaskInfo();
+    // }, []);
 
     return (
         <>

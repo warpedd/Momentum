@@ -3,7 +3,12 @@ let taskModel = require("../models/taskModel.js");
 const listTasks = async (req, res) => {
     try {
         // Use the find method without filter for all tasks
-        const tasks = await taskModel.find();
+        const { uid } = req.user;
+        
+        const tasks = await taskModel.find({ userId: uid });
+        console.log(`req.user: ${req.user}`);
+        console.log(`uid: ${uid}`);
+
 
         // Respond with the array of tasks
         res.status(200).json(tasks); 
@@ -18,9 +23,11 @@ const createTask = async (req, res) => {
     try {
         // Extract task data from the request body
         const { taskName, priority, estimatedPomodoros, notes } = req.body;
+        const { uid } = req.user;
 
         // Create a new task instance
         const newTask = new taskModel({
+            userId: uid,
             taskName: taskName,
             priority: priority,
             estimatedPomodoros: estimatedPomodoros, 

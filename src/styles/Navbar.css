@@ -32,6 +32,10 @@ nav a {
     font-size: 18px;
 }
 
+.nav-setting-btn {
+    padding-right: 1.5rem;
+}
+
 .nav-music-btn{
     margin: 0 1rem;
 	color: var(--textColor);
@@ -112,5 +116,13 @@ nav a:hover{
 
     nav{
         margin: 0;
+    }
+
+    .nav-music-btn {
+        font-size: 22px;
+    }
+
+    .nav-setting-btn {
+        padding: 0;
     }
 }

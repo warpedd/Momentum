@@ -4,7 +4,7 @@ import "../styles/Navbar.css";
 import useUser from '../hooks/useUser';
 import { getAuth, signOut } from "firebase/auth";
 
-function Navbar() {
+function Navbar({ onSettingsClick }) {
         const navRef = useRef();
       
     
@@ -23,13 +23,16 @@ function Navbar() {
         });
     };
 
-
-    return(
-        <header className="navbar-header">
+    var current = window.location.pathname;
+    if (current === '/') {
+        return(
+        <div>
+            <header className="navbar-header">
             <a href="/"><h3>Momentum</h3></a>
             <nav ref={navRef}>
                     <a href="/tracker">Tracker</a>
                     <button className="nav-music-btn">Music</button>
+                    <a href="#foo" className="nav-setting-btn" onClick={onSettingsClick}>Setting</a>
                     {user ?  <button className="nav-logout-btn" onClick={signout}>Logout</button> : <a href="/login">Login</a>}
                 <button className="nav-button-generic nav-close-button-generic" onClick={showNavbar}>
                     <FaTimes/>
@@ -38,8 +41,49 @@ function Navbar() {
             <button className="nav-button-generic" onClick = {showNavbar}>
                     <FaBars/>
             </button>
-        </header>
-    );
+            </header>
+        </div> 
+        );
+    } 
+    else {
+        return(
+            <div>
+            <header className="navbar-header">
+            <a href="/"><h3>Momentum</h3></a>
+            <nav ref={navRef}>
+                    <a href="/tracker">Tracker</a>
+                    <button className="nav-music-btn">Music</button>
+                    <></>
+                    {user ?  <button className="nav-logout-btn" onClick={signout}>Logout</button> : <a href="/login">Login</a>}
+                <button className="nav-button-generic nav-close-button-generic" onClick={showNavbar}>
+                    <FaTimes/>
+                </button>
+            </nav>
+            <button className="nav-button-generic" onClick = {showNavbar}>
+                    <FaBars/>
+            </button>
+            </header>
+        </div> 
+        );
+    }
+
+    // return(
+        
+        // <header className="navbar-header">
+        //     <a href="/"><h3>Momentum</h3></a>
+        //     <nav ref={navRef}>
+        //             <a href="/tracker">Tracker</a>
+        //             <button className="nav-music-btn">Music</button>
+        //             {user ?  <button className="nav-logout-btn" onClick={signout}>Logout</button> : <a href="/login">Login</a>}
+        //         <button className="nav-button-generic nav-close-button-generic" onClick={showNavbar}>
+        //             <FaTimes/>
+        //         </button>
+        //     </nav>
+        //     <button className="nav-button-generic" onClick = {showNavbar}>
+        //             <FaBars/>
+        //     </button>
+        // </header>
+    // );
 }
  
  export default Navbar;

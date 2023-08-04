@@ -14,26 +14,6 @@
   margin-bottom: -30px;
 }
 
-.setting-btn-icon, .setting-btn-generic{
-  float: left;
-}
-
-.setting-btn-icon{
-  padding: 1px;
-  padding-right: 5px;
-}
-
-.setting-btn-generic{
-  border: 1px solid black;
-  border-radius: 15px;
-  padding: 10px;
-  font-size: 16px;
-  position: absolute;
-  right: 8.5%;
-  margin-top: 20px;
-  background: none;
-}
-
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {

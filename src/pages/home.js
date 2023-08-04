@@ -6,10 +6,9 @@ import CreateTask from '../components/CreateTask';
 import TaskList from "../components/TaskList";
 import Button from '../components/Button';
 import useUser from '../hooks/useUser'
-import { IoMdSettings } from "react-icons/io";
 
 // returns the homepage for momentum
-function Home({onSettingsClick, pomodoroDur, shortBreakDur, longBreakDur}) {
+function Home({ pomodoroDur, shortBreakDur, longBreakDur}) {
 
     // Top level state and functions for tasks
     const [showAddTask, setShowAddTask] = useState(false)
@@ -28,7 +27,6 @@ function Home({onSettingsClick, pomodoroDur, shortBreakDur, longBreakDur}) {
 
     return (
         <>
-            <button className="setting-btn-generic" onClick={onSettingsClick}><div className="setting-btn-icon"><IoMdSettings/></div> Settings</button>
             <Pomodoro pomodoroDur={pomodoroDur} shortBreakDur={shortBreakDur} longBreakDur={longBreakDur}/>
             <div className='task-container'>
                 <header className='task-list-header'>

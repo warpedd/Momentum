@@ -49,7 +49,7 @@ const App = () => {
     return (
         <React.Fragment>
             <Router>
-                <Navbar/>
+                <Navbar onSettingsClick={handleSettingsClick}/>
                 <Switch>
                     <Route path="/" Component={Home} exact>
                         <Home 

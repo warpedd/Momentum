@@ -1,4 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
+import { IconContext } from "react-icons";
+import { CgClose } from "react-icons/cg";
 import "../styles/Setting.css";
 
 
@@ -45,9 +47,16 @@ const Setting = ( {closeSettings,
   return (
     <div className="overlay-container">
       <div className="setting-box" ref={dropdownRef}>
-        <button className="close-button">X</button>
+        <button className="close-button">
+        <IconContext.Provider value={{ color: "white", className: "settingsCloseIcon" }}>
+          <CgClose />
+        </IconContext.Provider>
+        </button>
         <div className="setting-content">
-          <div className="top">Settings</div>
+
+          <div className="top">
+            Settings
+          </div>
           {SettingLabels.map((label) =>
             label === "Pomodoro Timer" ? (
               <div className="setting-item" key={label}>

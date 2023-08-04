@@ -3,29 +3,36 @@ import PropTypes from 'prop-types'
 import Button from './Button'
 
 const STATUS = {
-  STARTED: 'Started',
+  RUNNING: 'Running',
   STOPPED: 'Stopped',
 }
 
 const CountdownTimer = ({duration}) => {
+
+    // State management function declarations
     const [secondsRemaining, setSecondsRemaining] = useState(duration)
     const [status, setStatus] = useState(STATUS.STOPPED)
   
+    // Primitives for calculating remaining time
     const secondsToDisplay = secondsRemaining % 60
     const minutesRemaining = (secondsRemaining - secondsToDisplay) / 60
     const minutesToDisplay = minutesRemaining % 60
     const hoursToDisplay = (minutesRemaining - minutesToDisplay) / 60
   
+    // State change handlers
     const handleStart = () => {
-      setStatus(STATUS.STARTED)
+      setStatus(STATUS.RUNNING)
     }
+    
     const handleStop = () => {
       setStatus(STATUS.STOPPED)
     }
+
     const handleReset = () => {
       setStatus(STATUS.STOPPED)
       setSecondsRemaining(duration)
     }
+
     useInterval(
       () => {
         if (secondsRemaining > 0) {
@@ -34,9 +41,10 @@ const CountdownTimer = ({duration}) => {
           setStatus(STATUS.STOPPED)
         }
       },
-      status === STATUS.STARTED ? 1000 : null,
+      status === STATUS.RUNNING ? 1000 : null,
       // passing null stops the interval
     )
+    
     return (
       <div className="countDown">
   
@@ -46,18 +54,12 @@ const CountdownTimer = ({duration}) => {
           </div>
           
           <div className='control-panel'>
-          <Button
-            color={'green'}
-            text={'Start'}
-            onClick={handleStart}
-          />
-  
-          <Button
-            color={'blue'}
-            text={'Pause'}
-            onClick={handleStop}
-          />
-  
+          
+          {status === STATUS.STOPPED ? 
+          <Button color={'green'} text={'Start'} onClick={handleStart} /> : 
+          <Button color={'blue'} text={'Pause'} onClick={handleStop}
+        />}
+      
           <Button
             color={'red'}
             text={'Reset'}

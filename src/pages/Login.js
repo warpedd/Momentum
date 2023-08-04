@@ -17,9 +17,9 @@ export const Login = (props) => {
         try {
             await signInWithEmailAndPassword(getAuth(), email, pass);
             history.push("/");
-        } catch (e) {
+        } catch (error) {
             // If user is not authenticated, this sets the error using what is caught from firebase
-            setError(e.message);
+            setError(error.message);
         }
     }
   

@@ -70,22 +70,6 @@ const App = () => {
                     <Route path="/login" Component={Login} exact>
                         { currentForm === "login" ? <Login onFormSwitch={toggleForm} /> : <Register onFormSwitch={toggleForm} /> }
                     </Route>
-                    <Route path="/settings">
-                        <Setting 
-                                    closeSettings={handleCloseSettings} 
-                                    pomodoroDur={pomodoroDur} 
-                                    setPomodoroDur={setPomodoroDur}
-                                    shortBreakDur={shortBreakDur} 
-                                    setShortBreakDur={setShortBreakDur}
-                                    longBreakDur={longBreakDur} 
-                                    setLongBreakDur={setLongBreakDur}
-                                    autoStartBreak={autoStartBreak} 
-                                    setAutoStartBreaks={setAutoStartBreak}
-                                    autoSwitchTask={autoSwitchTask} 
-                                    setAutoSwitchTasks={setAutoSwitchTasks}
-                                    autoStartPomodoro={autoStartPomodoro} 
-                                    setAutoStartPomodoro={setAutoStartPomodoro}/>
-                    </Route>
                 </Switch>
             </Router>
              {showSettings && <Setting 

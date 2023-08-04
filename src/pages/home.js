@@ -22,7 +22,7 @@ function Home({onSettingsClick, pomodoroDur, shortBreakDur, longBreakDur}) {
 
     return (
         <>
-            <button className="setting-btn-generic" onClick={onSettingsClick}><div className="setting-btn-icon"><IoMdSettings/></div> Setting</button>
+            <button className="setting-btn-generic" onClick={onSettingsClick}><div className="setting-btn-icon"><IoMdSettings/></div> Settings</button>
             <Pomodoro pomodoroDur={pomodoroDur} shortBreakDur={shortBreakDur} longBreakDur={longBreakDur}/>
             <div className='task-container'>
                 <header className='task-list-header'>

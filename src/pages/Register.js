@@ -31,7 +31,7 @@ export const Register = (props) => {
 
     return (
         <div className="register-box">
-            <h2>Registeration</h2>
+            <h2>Registration</h2>
             {error && <p className="error">{error}</p>}
         <form className="register-form" onSubmit={handleRegisterAccount}>
             <label htmlFor="name">Name</label>

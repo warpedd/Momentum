@@ -35,7 +35,7 @@ function Home({ pomodoroDur, shortBreakDur, longBreakDur}) {
                     <h3>Tasks</h3>
                     {user 
                         ? <Button
-                            color={'green'}
+                            color={'#307D4F'}
                             text={'Add'}
                             onClick={() => setShowAddTask(!showAddTask)}
                             />

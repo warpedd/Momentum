@@ -28,7 +28,7 @@ function Navbar({ onSettingsClick }) {
         return(
         <div>
             <header className="navbar-header">
-            <a href="/"><h3>Momentum</h3></a>
+            <a href="/" className="nav-logo"><h3>Momentum</h3></a>
             <nav ref={navRef}>
                     <a href="/tracker">Tracker</a>
                     <button className="nav-music-btn">Music</button>
@@ -49,7 +49,7 @@ function Navbar({ onSettingsClick }) {
         return(
             <div>
             <header className="navbar-header">
-            <a href="/"><h3>Momentum</h3></a>
+            <a href="/" className="nav-logo"><h3>Momentum</h3></a>
             <nav ref={navRef}>
                     <a href="/tracker">Tracker</a>
                     <button className="nav-music-btn">Music</button>

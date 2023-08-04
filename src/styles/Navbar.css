@@ -4,16 +4,12 @@
 	box-sizing: border-box;
 }
 
-:root {
-    --mainColor: #8A9FB5;
-    --mainColorLight: #90B6E4;
-    --secondaryColor: #2D3D4E;
-    --textColor: #304459;
-}
-
-h3{
+.nav-logo {
+    text-decoration: none;
     font-weight: bold;
     font-size: 24px;
+    margin-left: 50px;
+    color: var(--textColor);
 }
 
 .navbar-header {
@@ -39,7 +35,6 @@ nav a {
 .nav-music-btn{
     margin: 0 1rem;
 	color: var(--textColor);
-	text-decoration: none;
     font-size: 18px;
     border: none;
     padding: 10px;
@@ -71,10 +66,10 @@ nav a:hover{
 }
 
 .nav-logout-btn {
-    border: 2px solid #90B6E4;
+    border: 2px solid #6DAB73;
     border-radius: 10px;
     padding: 10px;
-    background-color:#2D3D4E;
+    background-color:#307D4F;
     color: aliceblue;
     font-size: 16px;
 }
@@ -114,7 +109,7 @@ nav a:hover{
         font-size: 1.5rem;
     }
 
-    nav{
+    nav, .nav-logo{
         margin: 0;
     }
 

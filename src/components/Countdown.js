@@ -56,12 +56,12 @@ const CountdownTimer = ({duration}) => {
           <div className='control-panel'>
           
           {status === STATUS.STOPPED ? 
-          <Button color={'green'} text={'Start'} onClick={handleStart} /> : 
-          <Button color={'blue'} text={'Pause'} onClick={handleStop}
+          <Button color={'#b04552'} text={'Start'} onClick={handleStart} /> : 
+          <Button color={'#f18f60'} text={'Pause'} onClick={handleStop}
         />}
       
           <Button
-            color={'red'}
+            color={'#5976ba'}
             text={'Reset'}
             onClick={handleReset}
           />

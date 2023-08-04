@@ -1,8 +1,8 @@
 .login-box {
     text-align: center;
-    border: 1px solid #363949;
+    border: 1px solid var(--mainColor);
     padding: 20px;
-    background-color: #2d3d4e;
+    background-color: var(--secondaryColor);
     color: white;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
@@ -29,15 +29,18 @@ h2{
 
 label {
     text-align: left;
+    font-size: 18px;
 }
 
 input {
     margin: 0.5rem 0;
-    color: #2d3d4e;
+    height: 1.8rem;
+    color: var(--textColor);
+    font-size: 16px;
 }
 
 .login-button-generic{
-    background-color: #90B6E4;
+    background-color: var(--mainColor);
     color:  white;
     border-radius: 10px;
     padding: 20px;
@@ -45,17 +48,20 @@ input {
     cursor: pointer;
     margin-top: 30px;
     width: 100px;
+    font-size: 16px;
     margin-left: auto;
     margin-right: auto;
 }
 
 .login-link-button-generic{
     text-decoration: underline;
-    background-color: #90B6E4;
+    background-color: var(--mainColor);
     color:  white;
     border-radius: 10px;
     padding: 20px;
     border: none;
     cursor: pointer;
     margin-top: 30px;
+    font-size: 14px;
+    width: 70%;
 }

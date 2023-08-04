@@ -29,19 +29,19 @@ const Pomodoro = ({pomodoroDur, shortBreakDur, longBreakDur}) => {
             <div className="pomodoroTimer">
                 <div className='timer-select-panel'>
                 <Button
-                    color={'red'}
+                    color={'#526449'}
                     text={'Pomodoro'}
                     onClick={switchPomodoro}
                 />
   
                 <Button
-                    color={'lightblue'}
+                    color={'#708557'}
                     text={'Short Break'}
                     onClick={switchShortBreak}
                 />
   
                 <Button
-                    color={'blue'}
+                    color={'#708d6e'}
                     text={'Long Break'}
                     onClick={switchLongBreak}
                 />

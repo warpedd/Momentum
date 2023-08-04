@@ -1,13 +1,13 @@
 .register-box {
     text-align: center;
-    border: 1px solid #363949;
+    border: 1px solid var(--mainColor);
     padding: 20px;
-    background-color: #2d3d4e;
+    background-color: var(--secondaryColor);
     color: white;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     width: 500px; 
-    height: 500px;
+    height: 550px;
     margin-left: auto;
     margin-right: auto;
     margin-top: 40px;
@@ -22,22 +22,8 @@
     margin-top: 30px;
 }
 
-h2{
-    font-size: 24px;
-    font-weight: bold;
-}
-
-label {
-    text-align: left;
-}
-
-input {
-    margin: 0.5rem 0;
-    color: #2d3d4e;
-}
-
 .register-button-generic{
-    background-color: #90B6E4;
+    background-color: var(--mainColor);
     color:  white;
     border-radius: 10px;
     padding: 20px;
@@ -51,7 +37,7 @@ input {
 
 .register-link-button-generic{
     text-decoration: underline;
-    background-color: #90B6E4;
+    background-color: var(--mainColor);
     color:  white;
     border-radius: 10px;
     padding: 20px;

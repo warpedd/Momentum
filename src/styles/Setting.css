@@ -29,7 +29,7 @@
   padding: 20px;
   width: 400px; 
   height: 500px;
-  background-color: #2d3d4e;
+  background-color: rgb(61, 116, 61);
   color: white;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
@@ -83,7 +83,7 @@
 .inner:before {
   content: "ON";
   padding-left: 15px;
-  background-color: #060;
+  background-color: rgb(96, 104, 146);
   color: #fff;
   font-size: 10px;
   }
@@ -167,9 +167,9 @@
     font-size: 16px;
     padding: 5px;
     color: white;
-    background-color: #2d3d4e;
+    background-color: var(--mainColorLight);
     border: none;
     cursor: pointer;
     outline: none;
-    border-radius: 0px 2px 0px 2px;
+    border-radius: 0px 5px 0px 5px;
   }

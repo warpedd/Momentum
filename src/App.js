@@ -72,7 +72,7 @@ const App = () => {
                     </Route>
                 </Switch>
             </Router>
-             {showSettings && <Setting 
+            {showSettings && <Setting 
                                 closeSettings={handleCloseSettings} 
                                 pomodoroDur={pomodoroDur} 
                                 setPomodoroDur={setPomodoroDur}
@@ -86,7 +86,7 @@ const App = () => {
                                 setAutoSwitchTasks={setAutoSwitchTasks}
                                 autoStartPomodoro={autoStartPomodoro} 
                                 setAutoStartPomodoro={setAutoStartPomodoro}/>}
-         </React.Fragment>
+        </React.Fragment>
     );
   };
   

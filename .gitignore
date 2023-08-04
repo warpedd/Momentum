@@ -4,3 +4,5 @@
 package-lock.json
 # dotenv environment variable file
 .env
+
+credentials.json

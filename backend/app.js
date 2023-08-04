@@ -1,13 +1,20 @@
-
+const fs = require("fs");
+const admin = require("firebase-admin");
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
 const app = express();
 const apiv1 = require("./apiv1/apiv1");
 
-//const userRoutes = require("./routes/userRoutes.js");
-
 require('dotenv').config();
+
+// adding firebase credentials to the backend
+const credentials = JSON.parse(
+    fs.readFileSync('./credentials.json')
+);
+admin.initializeApp({
+    credential: admin.credential.cert(credentials),
+});
 
 const mongoURL = process.env.MONGO_CONNECTION_STRING; 
 

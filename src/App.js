@@ -8,11 +8,13 @@ import Music from "./pages/Music";
 import Setting from "./pages/Setting";
 import { Login } from "./pages/Login";
 import { Register } from "./pages/Register";
+import useUser from './hooks/useUser';
 
 // Style imports
 import './styles/ButtonGeneric.css'
 import './styles/Tasks.css'
-import { setSelectionRange } from "@testing-library/user-event/dist/utils";
+import './App.css'
+// import { setSelectionRange } from "@testing-library/user-event/dist/utils";
 
 const App = () => {
     // Top level state and functions for settings
@@ -41,44 +43,48 @@ const App = () => {
       setCurrentForm(formName);
     }
 
+    const { user } = useUser();
+
     // Render method for App component
     return (
         <React.Fragment>
             <Router>
-                <Navbar onSettingsClick={handleSettingsClick} />
+                <Navbar/>
                 <Switch>
                     <Route path="/" Component={Home} exact>
                         <Home 
+                            onSettingsClick={handleSettingsClick}
                             pomodoroDur={pomodoroDur} 
                             shortBreakDur={shortBreakDur} 
                             longBreakDur={longBreakDur}/>
                     </Route>
                     <Route path="/tracker" Component={Tracker} exact>
-                        <Tracker/>
+                        { user ? <Tracker/> : 
+                            <div><p className="not-login-tracker-text">Please login to see Tracker data</p> 
+                                { currentForm === "login" ? <Login onFormSwitch={toggleForm} /> : <Register onFormSwitch={toggleForm} /> }
+                            </div> }
                     </Route>
                     <Route path="/music" Component={Music} exact>
                         <Music/>
                     </Route>
                     <Route path="/login" Component={Login} exact>
-                        {
-                            currentForm === "login" ? <Login onFormSwitch={toggleForm} /> : <Register onFormSwitch={toggleForm} />
-                        }
+                        { currentForm === "login" ? <Login onFormSwitch={toggleForm} /> : <Register onFormSwitch={toggleForm} /> }
                     </Route>
                     <Route path="/settings">
-                    <Setting 
-                                closeSettings={handleCloseSettings} 
-                                pomodoroDur={pomodoroDur} 
-                                setPomodoroDur={setPomodoroDur}
-                                shortBreakDur={shortBreakDur} 
-                                setShortBreakDur={setShortBreakDur}
-                                longBreakDur={longBreakDur} 
-                                setLongBreakDur={setLongBreakDur}
-                                autoStartBreak={autoStartBreak} 
-                                setAutoStartBreaks={setAutoStartBreak}
-                                autoSwitchTask={autoSwitchTask} 
-                                setAutoSwitchTasks={setAutoSwitchTasks}
-                                autoStartPomodoro={autoStartPomodoro} 
-                                setAutoStartPomodoro={setAutoStartPomodoro}/>
+                        <Setting 
+                                    closeSettings={handleCloseSettings} 
+                                    pomodoroDur={pomodoroDur} 
+                                    setPomodoroDur={setPomodoroDur}
+                                    shortBreakDur={shortBreakDur} 
+                                    setShortBreakDur={setShortBreakDur}
+                                    longBreakDur={longBreakDur} 
+                                    setLongBreakDur={setLongBreakDur}
+                                    autoStartBreak={autoStartBreak} 
+                                    setAutoStartBreaks={setAutoStartBreak}
+                                    autoSwitchTask={autoSwitchTask} 
+                                    setAutoSwitchTasks={setAutoSwitchTasks}
+                                    autoStartPomodoro={autoStartPomodoro} 
+                                    setAutoStartPomodoro={setAutoStartPomodoro}/>
                     </Route>
                 </Switch>
             </Router>

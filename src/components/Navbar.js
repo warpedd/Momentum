@@ -4,7 +4,7 @@ import "../styles/Navbar.css";
 import useUser from '../hooks/useUser';
 import { getAuth, signOut } from "firebase/auth";
 
-    function Navbar({ onSettingsClick }) {
+function Navbar() {
         const navRef = useRef();
       
     
@@ -12,7 +12,7 @@ import { getAuth, signOut } from "firebase/auth";
         navRef.current.classList.toggle("responsive_nav");
     };
 
-    const { user, isLoading } = useUser();
+    const { user } = useUser();
 
     const auth = getAuth();
     const signout = () => {
@@ -29,8 +29,7 @@ import { getAuth, signOut } from "firebase/auth";
             <a href="/"><h3>Momentum</h3></a>
             <nav ref={navRef}>
                     <a href="/tracker">Tracker</a>
-                    <a href="/music">Music</a>
-                    <a href="#" onClick={onSettingsClick}>Setting</a>
+                    <button className="nav-music-btn">Music</button>
                     {user ?  <button className="nav-logout-btn" onClick={signout}>Logout</button> : <a href="/login">Login</a>}
                 <button className="nav-button-generic nav-close-button-generic" onClick={showNavbar}>
                     <FaTimes/>

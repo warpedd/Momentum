@@ -1,12 +1,15 @@
 :root{
-  background-image: url(../images/background.jpg) ;
-  background-repeat: no-repeat;
-  background-size: cover;
-  height: 100%;
   --mainColor: #689A5f;
   --mainColorLight: #99B899;
   --secondaryColor: #5A785E;
   --textColor: #3A4C3E;
+}
+
+body{
+  background-image: url(../images/background.jpg) ;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100%;
 }
 
 .App {

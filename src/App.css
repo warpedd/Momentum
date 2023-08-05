@@ -8,16 +8,23 @@
 body{
   background-color: #ebf6be;
   background-image: url(background.svg);
+  /* background-color: #ebf6be; */
 }
 
-.inner-container{
+.outer-container {
   background-color: #ebf6be;
   min-width: 500px;
   width: 40%;
   height: 100vh;
   margin-left: auto;
   margin-right: auto;
-  padding: 10px;
+  padding-top: 10px;
+}
+
+.inner-container {
+  background-color: #ebf6be;
+  min-width: 500px;
+  padding-bottom: 10px;
 }
 
 .App {

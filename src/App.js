@@ -52,12 +52,14 @@ const App = () => {
                     <Navbar onSettingsClick={handleSettingsClick}/>
                     <Switch>
                         <Route path="/" Component={Home} exact>
-                            <div className="inner-container">
-                                <Home 
-                                    onSettingsClick={handleSettingsClick}
-                                    pomodoroDur={pomodoroDur} 
-                                    shortBreakDur={shortBreakDur} 
-                                    longBreakDur={longBreakDur}/>
+                            <div className="outer-container">
+                                <div className="inner-container">
+                                    <Home 
+                                        onSettingsClick={handleSettingsClick}
+                                        pomodoroDur={pomodoroDur} 
+                                        shortBreakDur={shortBreakDur} 
+                                        longBreakDur={longBreakDur}/>
+                                </div>
                             </div>
                         </Route>
                         <Route path="/tracker" Component={Tracker} exact>

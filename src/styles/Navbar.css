@@ -45,7 +45,9 @@ nav a {
 nav{
     display: flex;
 	align-items: center;
-    margin-left: 64%;
+    position: absolute;
+    right: 3%;
+    /* margin-left: 64%; */
 }
 
 

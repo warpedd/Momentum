@@ -2,7 +2,13 @@
 /node_modules
 /backend/node_modules
 package-lock.json
+
 # dotenv environment variable file
 .env
 
+# build directory
+/build
+/backend/build
+
+# super secret key :D
 credentials.json

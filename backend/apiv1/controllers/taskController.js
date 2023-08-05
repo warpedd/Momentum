@@ -6,9 +6,10 @@ const listTasks = async (req, res) => {
         const { uid } = req.user;
         
         const tasks = await taskModel.find({ userId: uid });
-        console.log(`req.user: ${req.user}`);
-        console.log(`uid: ${uid}`);
-
+        // console.log(`req.user`);
+        // console.log(req.user);
+        // console.log("\n");
+        // console.log(`uid: ${uid}`);
 
         // Respond with the array of tasks
         res.status(200).json(tasks); 

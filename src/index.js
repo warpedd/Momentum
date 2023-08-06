@@ -11,12 +11,12 @@ import { initializeApp } from "firebase/app";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyDZ39FTlyWYzhACLcoha9HXC3kmc1D9QCQ",
-  authDomain: "momentum-93d46.firebaseapp.com",
-  projectId: "momentum-93d46",
-  storageBucket: "momentum-93d46.appspot.com",
-  messagingSenderId: "233229829603",
-  appId: "1:233229829603:web:6d77750b389190f77f4cd6"
+    apiKey: "AIzaSyA5JpzcRUOFouKc1xUoMvzZVNE_xIA-IL0",
+    authDomain: "momentum-task-app.firebaseapp.com",
+    projectId: "momentum-task-app",
+    storageBucket: "momentum-task-app.appspot.com",
+    messagingSenderId: "993914762091",
+    appId: "1:993914762091:web:a203922416a42485ea122e"
 };
 
 // Initialize Firebase
@@ -24,9 +24,9 @@ const app = initializeApp(firebaseConfig);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
+    <React.StrictMode>
+        <App />
+    </React.StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function

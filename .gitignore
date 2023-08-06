@@ -12,3 +12,7 @@ package-lock.json
 
 # super secret key :D
 credentials.json
+
+# yaml :-0
+
+/backend/*.yaml

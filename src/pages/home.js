@@ -8,11 +8,11 @@ import Button from '../components/Button';
 import useUser from '../hooks/useUser'
 
 // returns the homepage for momentum
-function Home({ pomodoroDur, shortBreakDur, longBreakDur}) {
+function Home({ pomodoroDur, shortBreakDur, longBreakDur }) {
 
     // Top level state and functions for tasks
     const [showAddTask, setShowAddTask] = useState(false)
-    const [ tasks, setTasks] = useState([]);
+    const [tasks, setTasks] = useState([]);
     const { user } = useUser();
 
     // useEffect(() => {
@@ -32,23 +32,23 @@ function Home({ pomodoroDur, shortBreakDur, longBreakDur}) {
 
     return (
         <>
-            <Pomodoro pomodoroDur={pomodoroDur} shortBreakDur={shortBreakDur} longBreakDur={longBreakDur}/>
+            <Pomodoro pomodoroDur={pomodoroDur} shortBreakDur={shortBreakDur} longBreakDur={longBreakDur} />
             <div className='task-container'>
                 <header className='task-list-header'>
                     <h3>Tasks</h3>
-                    {user 
+                    {user
                         ? <Button
                             color={'#307D4F'}
                             text={'Add'}
                             onClick={() => setShowAddTask(!showAddTask)}
-                            />
+                        />
                         : <Button
                             color={'grey'}
                             text={'Login to add tasks'}
-                            />} 
+                        />}
                 </header>
-                {showAddTask && <CreateTask/>}
-                <TaskList tasks={tasks} />                        
+                {showAddTask && <CreateTask />}
+                <TaskList tasks={tasks} />
             </div>
         </>
     );

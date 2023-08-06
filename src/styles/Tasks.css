@@ -61,3 +61,12 @@
     align-items: center;
     justify-content: space-between;
   }
+
+
+@media only screen and (max-width: 600px){
+    .task-container {
+        width: 75%;
+        margin: 7px;
+    }
+
+}

@@ -8,13 +8,12 @@
 body{
   background-color: #ebf6be;
   background-image: url(background.svg);
-  /* background-color: #ebf6be; */
 }
 
 .outer-container {
   background-color: #ebf6be;
-  min-width: 500px;
   width: 40%;
+  min-width: 500px;
   height: 100vh;
   margin-left: auto;
   margin-right: auto;
@@ -27,20 +26,27 @@ body{
   padding-bottom: 10px;
 }
 
-.App {
+.not-login-tracker-text{
+  text-align: center;
+  font-size: 30px;
+  margin: 20px;
+  margin-bottom: -30px;
+}
+
+@media only screen and (max-width: 600px){
+  .not-login-tracker-text {
+    font-size: 20px;
+  }
+}
+
+
+/* .App {
   text-align: center;
 }
 
 .App-logo {
   height: 40vmin;
   pointer-events: none;
-}
-
-.not-login-tracker-text{
-  text-align: center;
-  font-size: 30px;
-  margin: 20px;
-  margin-bottom: -30px;
 }
 
 
@@ -73,4 +79,4 @@ body{
   to {
     transform: rotate(360deg);
   }
-}
+} */

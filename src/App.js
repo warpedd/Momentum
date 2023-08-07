@@ -4,7 +4,6 @@ import Navbar from "./components/Navbar";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Home from "./pages/home";
 import Tracker from "./pages/Tracker";
-import Music from "./pages/Music";
 import Setting from "./pages/Setting";
 import { Login } from "./pages/Login";
 import { Register } from "./pages/Register";
@@ -69,9 +68,6 @@ const App = () => {
                                 <div><p className="not-login-tracker-text">Please login to see Tracker data</p> 
                                     { currentForm === "login" ? <Login onFormSwitch={toggleForm} /> : <Register onFormSwitch={toggleForm} /> }
                                 </div> }
-                        </Route>
-                        <Route path="/music" Component={Music} exact>
-                            <Music/>
                         </Route>
                         <Route path="/login" Component={Login} exact>
                             { currentForm === "login" ? <Login onFormSwitch={toggleForm} /> : <Register onFormSwitch={toggleForm} /> }

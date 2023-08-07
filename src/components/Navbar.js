@@ -1,11 +1,12 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
 import "../styles/Navbar.css";
 import useUser from '../hooks/useUser';
 import { getAuth, signOut } from "firebase/auth";
+import Music from "../pages/Music";
 
 function Navbar({ onSettingsClick }) {
-        const navRef = useRef();
+    const navRef = useRef();
       
     
     const showNavbar = () => {
@@ -24,6 +25,9 @@ function Navbar({ onSettingsClick }) {
     };
 
     var current = window.location.pathname;
+
+    const [showMusic, setShowMusic] = useState(false);
+
     if (current === '/') {
         return(
         <div>
@@ -31,7 +35,8 @@ function Navbar({ onSettingsClick }) {
             <a href="/" className="nav-logo"><h3>Momentum</h3></a>
             <nav ref={navRef}>
                     <a href="/tracker">Tracker</a>
-                    <button className="nav-music-btn">Music</button>
+                    <button className="nav-music-btn" onClick={() => setShowMusic(!showMusic)}>Music</button>
+                    {showMusic && (<Music/>)}
                     <a href="#foo" className="nav-setting-btn" onClick={onSettingsClick}>Setting</a>
                     {user ?  <button className="nav-logout-btn" onClick={signout}>Logout</button> : <a href="/login">Login</a>}
                 <button className="nav-button-generic nav-close-button-generic" onClick={showNavbar}>
@@ -52,8 +57,8 @@ function Navbar({ onSettingsClick }) {
             <a href="/" className="nav-logo"><h3>Momentum</h3></a>
             <nav ref={navRef}>
                     <a href="/tracker">Tracker</a>
-                    <button className="nav-music-btn">Music</button>
-                    <></>
+                    <button className="nav-music-btn" onClick={() => setShowMusic(!showMusic)}>Music</button>
+                    {showMusic && (<Music/>)}
                     {user ?  <button className="nav-logout-btn" onClick={signout}>Logout</button> : <a href="/login">Login</a>}
                 <button className="nav-button-generic nav-close-button-generic" onClick={showNavbar}>
                     <FaTimes/>

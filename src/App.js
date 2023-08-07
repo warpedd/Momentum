@@ -9,11 +9,13 @@ import Setting from "./pages/Setting";
 import { Login } from "./pages/Login";
 import { Register } from "./pages/Register";
 import useUser from './hooks/useUser';
+import ForgotPassword from "./pages/ForgotPassword";
 
 // Style imports
 import './styles/ButtonGeneric.css'
 import './styles/Tasks.css'
 import './App.css'
+
 // import { setSelectionRange } from "@testing-library/user-event/dist/utils";
 
 const App = () => {
@@ -73,6 +75,9 @@ const App = () => {
                         </Route>
                         <Route path="/login" Component={Login} exact>
                             { currentForm === "login" ? <Login onFormSwitch={toggleForm} /> : <Register onFormSwitch={toggleForm} /> }
+                        </Route>
+                        <Route path="/forgotpassword" Component={ForgotPassword} exact>
+                            <ForgotPassword/>
                         </Route>
                     </Switch>
                 </Router>

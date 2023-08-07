@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link, useHistory } from 'react-router-dom';
-import { getAuth, signInWithEmailAndPassword, sendPasswordResetEmail } from 'firebase/auth';
+import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 import "../styles/Login.css";
 
 export const Login = (props) => {
@@ -21,13 +21,6 @@ export const Login = (props) => {
             // If user is not authenticated, this sets the error using what is caught from firebase
             setError(error.message);
         }
-    }
-
-    const forgotPassword = () => {
-        sendPasswordResetEmail(getAuth(), email)
-
-        .then(() => { alert("Password reset email sent!") })
-        .catch((error) => { alert(error) })
     }
 
     return (
@@ -51,7 +44,7 @@ export const Login = (props) => {
                     placeholder="Enter password"
                     id="password"
                     name="password" />
-                <button className="forgot-button-generic" onClick={() => forgotPassword()}>Forgot Password</button>
+                <Link to="/forgotpassword" className="forgot-button-generic">Forgot Password</Link>
                 <button className="login-button-generic" type="submit">Log In</button>
             </form>
             <button className="login-link-button-generic" onClick={() => props.onFormSwitch('register')}>Don't have an account? Register here.</button>

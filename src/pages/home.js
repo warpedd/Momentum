@@ -33,22 +33,24 @@ function Home({ pomodoroDur, shortBreakDur, longBreakDur }) {
     return (
         <>
             <Pomodoro pomodoroDur={pomodoroDur} shortBreakDur={shortBreakDur} longBreakDur={longBreakDur} />
-            <div className='task-container'>
-                <header className='task-list-header'>
-                    <h3>Tasks</h3>
-                    {user
-                        ? <Button
-                            color={'#307D4F'}
-                            text={'Add'}
-                            onClick={() => setShowAddTask(!showAddTask)}
-                        />
-                        : <Button
-                            color={'grey'}
-                            text={'Login to add tasks'}
-                        />}
-                </header>
-                {showAddTask && <CreateTask />}
-                <TaskList tasks={tasks} />
+            <div className='task-background'>
+                <div className='task-container'>
+                    <header className='task-list-header'>
+                        <h3>Tasks</h3>
+                        {user
+                            ? <Button
+                                color={'#307D4F'}
+                                text={'Add'}
+                                onClick={() => setShowAddTask(!showAddTask)}
+                            />
+                            : <Button
+                                color={'grey'}
+                                text={'Login to add tasks'}
+                            />}
+                    </header>
+                    {showAddTask && <CreateTask />}
+                    <TaskList tasks={tasks} />
+                </div>
             </div>
         </>
     );

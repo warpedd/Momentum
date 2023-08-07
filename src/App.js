@@ -53,15 +53,10 @@ const App = () => {
                     <Navbar onSettingsClick={handleSettingsClick}/>
                     <Switch>
                         <Route path="/" Component={Home} exact>
-                            <div className="outer-container">
-                                <div className="inner-container">
-                                    <Home 
-                                        onSettingsClick={handleSettingsClick}
-                                        pomodoroDur={pomodoroDur} 
-                                        shortBreakDur={shortBreakDur} 
-                                        longBreakDur={longBreakDur}/>
-                                </div>
-                            </div>
+                            <Home onSettingsClick={handleSettingsClick}
+                                pomodoroDur={pomodoroDur} 
+                                shortBreakDur={shortBreakDur} 
+                                longBreakDur={longBreakDur}/>
                         </Route>
                         <Route path="/tracker" Component={Tracker} exact>
                             { user ? <Tracker/> : 

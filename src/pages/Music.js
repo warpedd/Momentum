@@ -16,7 +16,7 @@ function Music() {
           <ReactPlayer url="https://www.youtube.com/watch?v=JPMkiXb9ifo&ab_channel=OtakuBeats" loop={true} controls={true} width="500" height="50"/>
           <ReactPlayer url="https://www.youtube.com/watch?v=SHo93KEvHQY&ab_channel=Lugal" loop={true} controls={true} width="500" height="50"/>
        </div>
-       : <p>Pleast Login</p>}
+       : <p className='music-login-message'>Please Login</p>}
     </div>
   );
 }

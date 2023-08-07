@@ -16,7 +16,7 @@
 .login-form {
     display: flex;
     flex-direction: column;
-    width: 70%;
+    width: 80%;
     margin-left: auto;
     margin-right: auto;
     margin-top: 30px;
@@ -46,14 +46,14 @@ input {
     padding: 20px;
     border: none;
     cursor: pointer;
-    margin-top: 30px;
-    width: 100px;
+    margin-top: 25px;
+    width: 100%;
     font-size: 16px;
     margin-left: auto;
     margin-right: auto;
 }
 
-.login-link-button-generic{
+.login-link-button-generic {
     text-decoration: underline;
     background-color: var(--mainColor);
     color:  white;
@@ -63,7 +63,24 @@ input {
     cursor: pointer;
     margin-top: 30px;
     font-size: 14px;
-    width: 70%;
+    width: 80%;
+}
+
+.forgot-button-generic {
+    margin-top: 10px;
+    color: white;
+    background: none;
+    border: none;
+    width: 120px;
+    margin-left: 65%;
+    margin-right: 35%;
+
+}
+
+.login-button-generic:hover, 
+.login-link-button-generic:hover,
+.forgot-button-generic:hover{
+    color: rgb(168, 203, 220);
 }
 
 @media only screen and (max-width: 600px){
@@ -73,5 +90,10 @@ input {
 
     .login-link-button-generic{
         width: 80%;
+    }
+
+    .forgot-button-generic{
+        margin-left: auto;
+        margin-right: auto;
     }
 }

@@ -23,6 +23,7 @@
         margin-top: 450px;
         width: 70%;
         height: auto;
+        overflow: hidden;
     }
 
     .music-list {

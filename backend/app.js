@@ -39,14 +39,22 @@ const start = async () => {
 
 start();
 
+function nocache(req, res, next) {
+    res.header('Cache-Control', 'private, no-cache, no-store, must-revalidate');
+    res.header('Expires', '-1');
+    res.header('Pragma', 'no-cache');
+    next();
+}
+
 // Use CORS middleware
 app.use(cors());
 
 // Use express.json middleware
 app.use(express.json());
-app.use(express.static(path.join(__dirname, './build')));
+app.use(express.static(path.join(__dirname, './build'), { etag: false, lastModified: false }));
 
-app.get(/^(?!\/apiv1).+/, (req, res) => {
+app.get(/^(?!\/apiv1).+/, nocache, (req, res) => {
+    //res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate, proxy-revalidate');
     res.sendFile(path.join(__dirname, './build/index.html'));
 });
 

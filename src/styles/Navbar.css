@@ -30,6 +30,7 @@ nav a {
 
 .nav-setting-btn {
     padding-right: 1.5rem;
+    cursor: pointer;
 }
 
 .nav-music-btn{
@@ -37,9 +38,14 @@ nav a {
 	color: var(--textColor);
     font-size: 18px;
     border: none;
-    padding: 10px;
-    padding-top: 15px;
     background-color: var(--mainColor);
+    text-emphasis: none;
+    cursor: pointer;
+    font-family: inherit;
+}
+
+.nav-music-btn:hover{
+    color: var(--secondaryColor);
 }
 
 nav{

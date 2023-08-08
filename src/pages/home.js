@@ -13,22 +13,30 @@ function Home({ pomodoroDur, shortBreakDur, longBreakDur }) {
     // Top level state and functions for tasks
     const [showAddTask, setShowAddTask] = useState(false)
     const [tasks, setTasks] = useState([]);
+    const [tasksChanged, setTasksChanged] = useState(false);
     const { user } = useUser();
 
-    // useEffect(() => {
-    //     const loadTaskInfo = async () => {
-    //         const token = await user?.getIdToken();
-    //         const headers = token ? { authtoken: token } : {};
-    //         console.log(token);
-    //         const response = await axios.get("http://localhost:5000/apiv1/tasks/", { headers });
-    //         const newTaskList = response.data;
-    //         setTasks(newTaskList);
-    //     }
+     useEffect(() => {
+         const loadTaskInfo = async () => {
+             const token = await user?.getIdToken();
+             const headers = token ? { authtoken: token } : {};
+             console.log(token);
+             const response = await axios.get("http://localhost:5000/apiv1/tasks/", { headers });
+             const newTaskList = response.data;
+             setTasks(newTaskList);
+         }
 
-    //     if (user) {
-    //         loadTaskInfo();
-    //     } else console.log("did not fetch tasks; user is not logged in.");
-    // }, [user]);
+        if (user || tasksChanged) {
+            loadTaskInfo();
+            setTasksChanged(false);
+        } else console.log("did not fetch tasks; user is not logged in.");
+    }, [user, tasksChanged]);
+
+
+    // Callback for triggering update of the task list.
+    function updateTasksChanged () {
+        setTasksChanged(true);
+    }
 
     return (
         <>
@@ -48,7 +56,7 @@ function Home({ pomodoroDur, shortBreakDur, longBreakDur }) {
                                 text={'Login to add tasks'}
                             />}
                     </header>
-                    {showAddTask && <CreateTask />}
+                    {showAddTask && <CreateTask onTaskListUpdated={updateTasksChanged}/>}
                     <TaskList tasks={tasks} />
                 </div>
             </div>

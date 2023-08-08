@@ -1,9 +1,19 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { PieChart, Pie, Cell } from "recharts";
+import "../styles/Tracker.css";
 
 const Tracker = () => {
 	const [task, setTask] = useState("");
 	const [tasks, setTasks] = useState([]);
 	const [completedTasks, setCompletedTasks] = useState([]);
+	const [chartData, setChartData] = useState([]);
+
+	useEffect(() => {
+		setChartData([
+			{ name: "Remaining", value: tasks.length },
+			{ name: "Completed", value: completedTasks.length },
+		]);
+	}, [tasks, completedTasks]);
 
 	const handleInputChange = (event) => {
 		setTask(event.target.value);
@@ -24,30 +34,62 @@ const Tracker = () => {
 	};
 
 	return (
-		<div className="Tracker">
-			<h1>Tracker</h1>
-			<input
-				type="text"
-				value={task}
-				onChange={handleInputChange}
-				placeholder="Task Name"
-			/>
-			<button onClick={handleAddTask}>Add Task</button>
-			<h2>Remaining</h2>
-			<ul>
-				{tasks.map((task, index) => (
-					<li key={index}>
-						{task}
-						<input type="checkbox" onChange={() => handleCompleteTask(index)} />
-					</li>
-				))}
-			</ul>
-			<h2>Completed</h2>
-			<ul>
-				{completedTasks.map((task, index) => (
-					<li key={index}>{task}</li>
-				))}
-			</ul>
+		<div className="tracker-container">
+			<div className="Tracker">
+				<div className="tasks-section">
+					<h1>Remaining</h1>
+					<ul>
+						{tasks.map((task, index) => (
+							<li key={index}>
+								{task}
+								<input
+									type="checkbox"
+									onChange={() => handleCompleteTask(index)}
+								/>
+							</li>
+						))}
+					</ul>
+					<h1>Completed</h1>
+					<ul>
+						{completedTasks.map((task, index) => (
+							<li key={index}>{task}</li>
+						))}
+					</ul>
+
+					<div className="chart-section">
+						<PieChart width={400} height={400}>
+							<Pie
+								dataKey="value"
+								isAnimationActive={false}
+								data={chartData}
+								cx={200}
+								cy={200}
+								outerRadius={80}
+								fill="#8884d8"
+								label
+							>
+								{chartData.map((entry, index) => (
+									<Cell
+										key={`cell-${index}`}
+										fill={["#FF0000", "#00D100"][index % 2]}
+									/>
+								))}
+							</Pie>
+						</PieChart>
+					</div>
+
+					<div className="add-task-section">
+						<h1>Add Task</h1>
+						<input
+							type="text"
+							value={task}
+							onChange={handleInputChange}
+							placeholder="Task Name"
+						/>
+						<button onClick={handleAddTask} className="tracker-add-btn">Add Task</button>
+					</div>
+				</div>
+			</div>
 		</div>
 	);
 };

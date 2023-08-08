@@ -1,23 +1,43 @@
 .Tracker {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	gap: 20px;
 	width: 100%;
-	max-width: 600px;
+	max-width: 1200px;
 	margin: 0 auto;
 	padding: 20px;
 	box-sizing: border-box;
 }
 
-.Tracker h1 {
-	text-align: center;
+.tracker-container {
+	background-color: #ebf6be;
 }
 
-.Tracker input[type="text"] {
+.tasks-section ul,
+.add-task-section ul {
+	list-style-type: none;
+	padding: 0;
+	background-color: #f0f0f0;
+	border-radius: 5px;
+	padding: 10px;
+}
+
+.tasks-section li,
+.add-task-section li {
+	background-color: white;
+	margin-bottom: 10px;
+	padding: 10px;
+	border-radius: 5px;
+}
+
+input[type="text"] {
 	width: 100%;
 	padding: 10px;
 	margin-bottom: 10px;
 	box-sizing: border-box;
 }
 
-.Tracker button {
+.tracker-add-btn {
 	padding: 10px 20px;
 	background-color: lightblue;
 	border: none;
@@ -25,16 +45,4 @@
 	cursor: pointer;
 	display: block;
 	margin: 0 auto;
-}
-
-.Tracker ul {
-	list-style-type: none;
-	padding: 0;
-}
-
-.Tracker li {
-	background-color: white;
-	margin-bottom: 10px;
-	padding: 10px;
-	border-radius: 5px;
 }

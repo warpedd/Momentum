@@ -1,20 +1,34 @@
-import { useState } from 'react'
+import React, { useState, useRef } from 'react'
 import axios from 'axios';
 import useUser from '../hooks/useUser'
 
 const CreateTask = ({ onTaskListUpdated }) => {
     const [taskName, setTaskName] = useState('')
-    const [priority, setPriority] = useState(99)
+    const [priority, setPriority] = useState(10)
     const [estPoms, setEstPoms] = useState(1)
     const [notes, setNotes] = useState('')
     const { user } = useUser();
 
+    const [errMsg, setErrMsg] = useState('')
+
+    // Set the form back to the defaults
+    function clearForm() {
+        setTaskName('')
+        setPriority(10)
+        setEstPoms(1)
+        setNotes('')
+    }
+
+    // Post to DB with form data, trigger update of task list via callback, clear form.
     const addTask = async (e) => {
         e.preventDefault()
 
         try {
+            //
+            // TODO: Add check for task name already in task list
+            //
             if (!taskName) {
-                alert('Please provide a task name');
+                setErrMsg('Please provide a task name');
                 return;
             } else {
                 const token = user && await user.getIdToken();
@@ -24,24 +38,23 @@ const CreateTask = ({ onTaskListUpdated }) => {
                     taskName: taskName,
                     priority: priority,
                     estimatedPomodoros: estPoms,
-                    notes: notes
+                    notes: notes,
+                    status: false
                 }, { headers });
-                onTaskListUpdated();
 
-                // Clear forms following submit
-                setTaskName('');
-                setPriority(99);
-                setEstPoms(1);
-                setNotes('');
+                // Clear form and trigger task list reload
+                clearForm();
+                onTaskListUpdated();
             }
         } catch (error) {
             // Handle the error here
             console.error('Error adding task:', error);
+
         }
     }
 
     return (
-        <form className='add-task' onSubmit={addTask}>
+        <form id='add-task-form' className='add-task' onSubmit={addTask}>
             <div className='form-input'>
                 <label>Name</label>
                 <input
@@ -56,6 +69,8 @@ const CreateTask = ({ onTaskListUpdated }) => {
                 <input
                     type='number'
                     value={priority}
+                    max={10}
+                    min={1}
                     onChange={(e) => setPriority(e.target.value)}
                 />
             </div>
@@ -63,6 +78,8 @@ const CreateTask = ({ onTaskListUpdated }) => {
                 <label>Est. Pomodoros</label>
                 <input
                     type='number'
+                    max={4}
+                    min={1}
                     value={estPoms}
                     onChange={(e) => setEstPoms(e.currentTarget.value)}
                 />
@@ -76,8 +93,11 @@ const CreateTask = ({ onTaskListUpdated }) => {
                 />
             </div>
 
+            <div className='form-msg'>
+                <p id='task-input-msg'>{errMsg}</p>
+            </div>
 
-            <input type='submit' value='Save Task' className='button-generic button-generic-block' />
+            <input type='submit' value='Save Task' className='button-generic button-add-task-submit' />
         </form>
     )
 }

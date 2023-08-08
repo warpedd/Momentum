@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useHistory } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 import "../styles/Login.css";
 
@@ -22,28 +22,29 @@ export const Login = (props) => {
             setError(error.message);
         }
     }
-  
+
     return (
         <div className="login-box">
             <h2>Login</h2>
             {error && <p className="error">{error}</p>}
             <form className="login-form" onSubmit={handleLogIn}>
                 <label htmlFor="email">Email</label>
-                <input 
-                    value={email} 
+                <input
+                    value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    type="email" 
-                    placeholder="Enter email" 
-                    id="email" 
+                    type="email"
+                    placeholder="Enter email"
+                    id="email"
                     name="email" />
                 <label htmlFor="password">Password</label>
-                <input 
-                    value={pass} 
-                    onChange={(e) => setPass(e.target.value)} 
-                    type="password" 
-                    placeholder="Enter password" 
-                    id="password" 
+                <input
+                    value={pass}
+                    onChange={(e) => setPass(e.target.value)}
+                    type="password"
+                    placeholder="Enter password"
+                    id="password"
                     name="password" />
+                <Link to="/forgotpassword" className="forgot-button-generic">Forgot Password</Link>
                 <button className="login-button-generic" type="submit">Log In</button>
             </form>
             <button className="login-link-button-generic" onClick={() => props.onFormSwitch('register')}>Don't have an account? Register here.</button>

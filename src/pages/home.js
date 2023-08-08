@@ -16,15 +16,15 @@ function Home({ pomodoroDur, shortBreakDur, longBreakDur }) {
     const [tasksChanged, setTasksChanged] = useState(false);
     const { user } = useUser();
 
-     useEffect(() => {
-         const loadTaskInfo = async () => {
-             const token = await user?.getIdToken();
-             const headers = token ? { authtoken: token } : {};
-             console.log(token);
-             const response = await axios.get("http://localhost:5000/apiv1/tasks/", { headers });
-             const newTaskList = response.data;
-             setTasks(newTaskList);
-         }
+    useEffect(() => {
+        const loadTaskInfo = async () => {
+            const token = await user?.getIdToken();
+            const headers = token ? { authtoken: token } : {};
+            console.log(token);
+            const response = await axios.get("http://localhost:5000/apiv1/tasks/", { headers });
+            const newTaskList = response.data;
+            setTasks(newTaskList);
+        }
 
         if (user || tasksChanged) {
             loadTaskInfo();
@@ -34,7 +34,7 @@ function Home({ pomodoroDur, shortBreakDur, longBreakDur }) {
 
 
     // Callback for triggering update of the task list.
-    function updateTasksChanged () {
+    function updateTasksChanged() {
         setTasksChanged(true);
     }
 
@@ -56,7 +56,7 @@ function Home({ pomodoroDur, shortBreakDur, longBreakDur }) {
                                 text={'Login to add tasks'}
                             />}
                     </header>
-                    {showAddTask && <CreateTask onTaskListUpdated={updateTasksChanged}/>}
+                    {showAddTask && <CreateTask onTaskListUpdated={updateTasksChanged} />}
                     <TaskList tasks={tasks} />
                 </div>
             </div>

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { PieChart, Pie, Cell } from "recharts";
+import "../styles/Tracker.css";
 
 const Tracker = () => {
 	const [task, setTask] = useState("");
@@ -85,7 +86,7 @@ const Tracker = () => {
 							onChange={handleInputChange}
 							placeholder="Task Name"
 						/>
-						<button onClick={handleAddTask}>Add Task</button>
+						<button onClick={handleAddTask} className="tracker-add-btn">Add Task</button>
 					</div>
 				</div>
 			</div>

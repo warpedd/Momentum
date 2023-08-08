@@ -15,20 +15,20 @@ function Home({ pomodoroDur, shortBreakDur, longBreakDur }) {
     const [tasks, setTasks] = useState([]);
     const { user } = useUser();
 
-    // useEffect(() => {
-    //     const loadTaskInfo = async () => {
-    //         const token = await user?.getIdToken();
-    //         const headers = token ? { authtoken: token } : {};
-    //         console.log(token);
-    //         const response = await axios.get("http://localhost:5000/apiv1/tasks/", { headers });
-    //         const newTaskList = response.data;
-    //         setTasks(newTaskList);
-    //     }
+    useEffect(() => {
+        const loadTaskInfo = async () => {
+            const token = await user?.getIdToken();
+            const headers = token ? { authtoken: token } : {};
+            console.log(token);
+            const response = await axios.get("/apiv1/tasks/", { headers });
+            const newTaskList = response.data;
+            setTasks(newTaskList);
+        }
 
-    //     if (user) {
-    //         loadTaskInfo();
-    //     } else console.log("did not fetch tasks; user is not logged in.");
-    // }, [user]);
+        if (user) {
+            loadTaskInfo();
+        } else console.log("did not fetch tasks; user is not logged in.");
+    }, [user]);
 
     return (
         <>

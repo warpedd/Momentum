@@ -8,7 +8,7 @@ const CreateTask = ({ onTaskListUpdated }) => {
     const [estPoms, setEstPoms] = useState(1)
     const [notes, setNotes] = useState('')
     const { user } = useUser();
-    
+
     const addTask = async (e) => {
         e.preventDefault()
 
@@ -19,11 +19,11 @@ const CreateTask = ({ onTaskListUpdated }) => {
             } else {
                 const token = user && await user.getIdToken();
                 const headers = token ? { authtoken: token } : {};
-                axios.post(`http://localhost:5000/apiv1/tasks/`, {
+                axios.post(`/apiv1/tasks/`, {
                     userId: token,
-                    taskName: taskName, 
-                    priority: priority, 
-                    estimatedPomodoros: estPoms, 
+                    taskName: taskName,
+                    priority: priority,
+                    estimatedPomodoros: estPoms,
                     notes: notes
                 }, { headers });
                 onTaskListUpdated();
@@ -39,47 +39,47 @@ const CreateTask = ({ onTaskListUpdated }) => {
             console.error('Error adding task:', error);
         }
     }
-  
+
     return (
-      <form className='add-task' onSubmit={addTask}>
-        <div className='form-input'>
-          <label>Name</label>
-          <input
-            type='text'
-            placeholder='Task Name'
-            value={taskName}
-            onChange={(e) => setTaskName(e.target.value)}
-          />
-        </div>
-        <div className='form-input'>
-          <label>Priority</label>
-          <input
-            type='number'
-            value={priority}
-            onChange={(e) => setPriority(e.target.value)}
-          />
-        </div>
-        <div className='form-input'>
-          <label>Est. Pomodoros</label>
-          <input
-            type='number'
-            value={estPoms}
-            onChange={(e) => setEstPoms(e.currentTarget.value)}
-          />
-        </div>
-        <div className='form-input'>
-        <label>Notes</label>
-        <textarea 
-            name="taskNotes" 
-            rows={4} cols={40} 
-            onChange={(e) => setNotes(e.currentTarget.value)}
-            />
-        </div>
-        
-  
-        <input type='submit' value='Save Task' className='button-generic button-generic-block' />
-      </form>
+        <form className='add-task' onSubmit={addTask}>
+            <div className='form-input'>
+                <label>Name</label>
+                <input
+                    type='text'
+                    placeholder='Task Name'
+                    value={taskName}
+                    onChange={(e) => setTaskName(e.target.value)}
+                />
+            </div>
+            <div className='form-input'>
+                <label>Priority</label>
+                <input
+                    type='number'
+                    value={priority}
+                    onChange={(e) => setPriority(e.target.value)}
+                />
+            </div>
+            <div className='form-input'>
+                <label>Est. Pomodoros</label>
+                <input
+                    type='number'
+                    value={estPoms}
+                    onChange={(e) => setEstPoms(e.currentTarget.value)}
+                />
+            </div>
+            <div className='form-input'>
+                <label>Notes</label>
+                <textarea
+                    name="taskNotes"
+                    rows={4} cols={40}
+                    onChange={(e) => setNotes(e.currentTarget.value)}
+                />
+            </div>
+
+
+            <input type='submit' value='Save Task' className='button-generic button-generic-block' />
+        </form>
     )
-  }
-  
-  export default CreateTask
+}
+
+export default CreateTask

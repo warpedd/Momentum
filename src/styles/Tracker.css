@@ -2,10 +2,10 @@
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr;
 	gap: 20px;
-	width: 100%;
+	width: 40%;
 	max-width: 1200px;
 	margin: 0 auto;
-	padding: 20px;
+	padding: 100px;
 	box-sizing: border-box;
 }
 
@@ -17,7 +17,7 @@
 .add-task-section ul {
 	list-style-type: none;
 	padding: 0;
-	background-color: #f0f0f0;
+	background-color: green;
 	border-radius: 5px;
 	padding: 10px;
 }
@@ -26,8 +26,8 @@
 .add-task-section li {
 	background-color: white;
 	margin-bottom: 10px;
-	padding: 10px;
-	border-radius: 5px;
+	padding: 5px;
+	border-radius: 10px;
 }
 
 input[type="text"] {
@@ -39,7 +39,7 @@ input[type="text"] {
 
 .tracker-add-btn {
 	padding: 10px 20px;
-	background-color: lightblue;
+	background-color: darkgray;
 	border: none;
 	border-radius: 5px;
 	cursor: pointer;

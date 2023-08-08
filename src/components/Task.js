@@ -20,6 +20,7 @@ const Task = ({ task, markComplete, markDelete }) => {
 
             await axios.delete(`http://localhost:5000/apiv1/tasks/${taskId}`, { headers });
 
+            // Callback to trigger reload of task list.
             markDelete();
         } catch (error) {
             console.error('Error deleting task:', error);

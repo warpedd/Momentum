@@ -1,6 +1,6 @@
 import Task from './Task'
 
-const TaskList = ({ tasks, deleteTask }) => {
+const TaskList = ({ tasks, markDelete }) => {
 
     return (
         <div className='tasks'>
@@ -9,7 +9,7 @@ const TaskList = ({ tasks, deleteTask }) => {
                     <Task
                         key={task._id} // Make sure to include a unique key for each Task component
                         task={task}
-                        markDelete={deleteTask} // Pass the deleteTask callback to the Task component
+                        markDelete={markDelete} // Pass the deleteTask callback to the Task component
                     />
                 ))}
         </div>

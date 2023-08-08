@@ -56,7 +56,7 @@ function Home({ pomodoroDur, shortBreakDur, longBreakDur }) {
                             />}
                     </header>
                     {showAddTask && <CreateTask onTaskListUpdated={updateTasksChanged} />}
-                    <TaskList tasks={tasks} />
+                    <TaskList tasks={tasks} markDelete={updateTasksChanged} />
                 </div>
             </div>
         </>

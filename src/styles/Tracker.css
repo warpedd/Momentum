@@ -1,48 +1,29 @@
 .Tracker {
-	display: grid;
-	grid-template-columns: 1fr 1fr 1fr;
-	gap: 20px;
-	width: 40%;
-	max-width: 1200px;
-	margin: 0 auto;
-	padding: 100px;
-	box-sizing: border-box;
-}
-
-.tracker-container {
 	background-color: #ebf6be;
 }
 
-.tasks-section ul,
-.add-task-section ul {
-	list-style-type: none;
-	padding: 0;
-	background-color: green;
-	border-radius: 5px;
-	padding: 10px;
+.tracker-task-list {
+	max-width: 500px;
+    margin: 30px auto;
+    overflow: auto;
+    min-height: 300px;
+	max-height: 400px;
+    border: 1.5px solid #1c2f20;
+    padding: 30px;
+    border-radius: 5px;
+    text-align: center;
 }
 
-.tasks-section li,
-.add-task-section li {
-	background-color: white;
-	margin-bottom: 10px;
-	padding: 5px;
-	border-radius: 10px;
+.chart-section {
+	display: flex;
+	align-items: center;
+	align-content: center;
+	justify-content: center;
 }
 
-input[type="text"] {
-	width: 100%;
-	padding: 10px;
-	margin-bottom: 10px;
-	box-sizing: border-box;
-}
+@media only screen and (max-width: 600px){
+	.tracker  {
+	  width: 100%;
+	}
 
-.tracker-add-btn {
-	padding: 10px 20px;
-	background-color: darkgray;
-	border: none;
-	border-radius: 5px;
-	cursor: pointer;
-	display: block;
-	margin: 0 auto;
 }

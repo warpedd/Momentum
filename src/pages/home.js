@@ -8,7 +8,9 @@ import Button from '../components/Button';
 import useUser from '../hooks/useUser'
 
 // returns the homepage for momentum
-function Home({ pomodoroDur, shortBreakDur, longBreakDur }) {
+function Home({ pomodoroDur, shortBreakDur, longBreakDur, 
+    autoStartBreak, autoStartPomodoro,
+    pomodorosBeforeLongBreak, onSwitchShortBreak, onSwitchLongBreak }) {
 
     // Top level state and functions for tasks
     const [showAddTask, setShowAddTask] = useState(false)
@@ -36,10 +38,18 @@ function Home({ pomodoroDur, shortBreakDur, longBreakDur }) {
     function updateTasksChanged() {
         setTasksChanged(true);
     }
-
+    
     return (
         <>
-            <Pomodoro pomodoroDur={pomodoroDur} shortBreakDur={shortBreakDur} longBreakDur={longBreakDur} />
+            <Pomodoro 
+            pomodoroDur={pomodoroDur} 
+            shortBreakDur={shortBreakDur} 
+            longBreakDur={longBreakDur}
+            autoStartBreak={autoStartBreak} 
+            autoStartPomodoro={autoStartPomodoro} 
+            pomodorosBeforeLongBreak={pomodorosBeforeLongBreak} 
+            switchShortBreak={onSwitchShortBreak}
+            switchLongBreak={onSwitchLongBreak}/>
             <div className='task-background'>
                 <div className='task-container'>
                     <header className='task-list-header'>

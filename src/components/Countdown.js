@@ -7,7 +7,7 @@ const STATUS = {
   STOPPED: 'Stopped',
 }
 
-const CountdownTimer = ({duration}) => {
+const CountdownTimer = ({duration, onComplete, autoStart}) => {
 
     // State management function declarations
     const [secondsRemaining, setSecondsRemaining] = useState(duration)
@@ -45,6 +45,19 @@ const CountdownTimer = ({duration}) => {
       // passing null stops the interval
     )
     
+    useEffect(() => {
+      console.log('autoStart:', autoStart);
+      if (autoStart) {
+        handleStart(); // Start the timer automatically
+      }
+    }, [autoStart]);
+
+    useEffect(() => {
+      if (secondsRemaining === 0) {
+          onComplete(); // Call the provided callback function
+      }
+    }, [secondsRemaining, onComplete]);
+  
     return (
       <div className="countDown">
   

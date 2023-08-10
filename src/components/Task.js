@@ -27,18 +27,31 @@ const Task = ({ task, markComplete, markDelete }) => {
         }
     };
 
+    const completeTask = async (taskId, action) => {
+        try {
+            const token = await user?.getIdToken();
+            const headers = token ? { authtoken: token } : {};
+            const body = { action };
+
+            await axios.put(`http://localhost:5000/apiv1/tasks/${taskId}`, body, { headers });
+            // Update your task list or UI as needed
+        } catch (error) {
+            console.error('Error updating task:', error);
+        }
+    };
+
     return (
         <div className="task">
             <div>
                 <h3>{task.taskName}{' '}</h3>
                 <div className="btn-container">
-                    <button className='complete-btn' onClick={markComplete}><FaCheck size={20} /></button>
+                    <button className='complete-btn' onClick={() => completeTask(task._id, 'toggleCompletion')}> <FaCheck size={20} /></button>
                     <span>     </span>
                     <button className='delete-btn' onClick={() => deleteTask(task._id)}><IoMdClose size={20} /></button>
                 </div>
             </div>
             <p>Priority: {task.priority}</p>
-            <p>Est. Pomodoros: {task.estPoms}</p>
+            <p>Est. Pomodoros: {task.estimatedPomodoros}</p>
             {!task.notes ? <p></p> : <p>Notes:{task.notes}</p>}
         </div>
     )

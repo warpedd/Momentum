@@ -37,7 +37,7 @@ function Navbar({ onSettingsClick }) {
                     <a href="/tracker">Tracker</a>
                     <button className="nav-music-btn" onClick={() => setShowMusic(!showMusic)}>Music</button>
                     {showMusic && (<Music/>)}
-                    <a href="#foo" className="nav-setting-btn" onClick={onSettingsClick}>Setting</a>
+                    <a href="#foo" className="nav-setting-btn" onClick={onSettingsClick}>Settings</a>
                     {user ?  <button className="nav-logout-btn" onClick={signout}>Logout</button> : <a href="/login">Login</a>}
                 <button className="nav-button-generic nav-close-button-generic" onClick={showNavbar}>
                     <FaTimes/>

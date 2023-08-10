@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { PieChart, Pie, Cell } from "recharts";
+import { PieChart, Pie, Cell, Legend } from "recharts";
 import axios from 'axios';
 import useUser from '../hooks/useUser'
 import TaskList from "../components/TaskList";
@@ -41,8 +41,8 @@ const Tracker = () => {
     useEffect(() => {
         // After completed and incomplete tasks have been updated, update the chart data
         setChartData([
-            { name: "Remaining", value: incTasks.length },
-            { name: "Completed", value: compTasks.length },
+            { name: "Tasks Remaining", value: incTasks.length },
+            { name: "Tasks Completed", value: compTasks.length },
         ]);
     }, [compTasks, incTasks]);
 
@@ -63,7 +63,33 @@ const Tracker = () => {
 
     return (
         <div className="tracker-container">
-            <div className="Tracker">
+            <div className="tracker">
+                <div className="chart-section">
+                    <h2>Progress</h2>
+                    <PieChart width={400} height={400} padding={{right: 0, left: 0, top: 0,  bottom: 0}}>
+                        <Pie
+                            dataKey="value"
+                            isAnimationActive={false}
+                            data={chartData}
+                            cx={200}
+                            cy={200}
+                            outerRadius={80}
+                            fill="#8884d8"
+                            label={true}
+                            legend
+                            legendType="diamond"
+
+                        >
+                            {chartData.map((entry, index) => (
+                                <Cell
+                                    key={`cell-${index}`}
+                                    fill={["#FF0000", "#00D100"][index % 2]}
+                                />
+                            ))}
+                        </Pie>
+                        <Legend verticalAlign="top" height={36} layout="vertical"/>
+                    </PieChart>
+                </div>
                 <div className="tasks-section">
                     <div className="tracker-task-list">
                         <header>
@@ -77,27 +103,6 @@ const Tracker = () => {
                         </header>
                         <TaskList tasks={compTasks} markChange={updateTasksChanged} />
                     </div>
-                </div>
-                <div className="chart-section">
-                    <PieChart width={400} height={400}>
-                        <Pie
-                            dataKey="value"
-                            isAnimationActive={false}
-                            data={chartData}
-                            cx={200}
-                            cy={200}
-                            outerRadius={80}
-                            fill="#8884d8"
-                            label
-                        >
-                            {chartData.map((entry, index) => (
-                                <Cell
-                                    key={`cell-${index}`}
-                                    fill={["#FF0000", "#00D100"][index % 2]}
-                                />
-                            ))}
-                        </Pie>
-                    </PieChart>
                 </div>
             </div>
         </div>

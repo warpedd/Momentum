@@ -1,9 +1,26 @@
-.Tracker {
+.tracker {
+	
 	background-color: #ebf6be;
+	display: flex;
+	align-items: center;
+	align-content: center;
+	justify-content: center;
+	flex-direction: row;
 }
+
+.chart-section {
+	max-width: 500px;
+	text-align: center;
+}
+
+.chart-section h2 {
+	margin: 0 auto;
+}
+
 
 .tracker-task-list {
 	max-width: 500px;
+	min-width: 400px;
     margin: 30px auto;
     overflow: auto;
     min-height: 300px;
@@ -14,16 +31,9 @@
     text-align: center;
 }
 
-.chart-section {
-	display: flex;
-	align-items: center;
-	align-content: center;
-	justify-content: center;
-}
 
-@media only screen and (max-width: 600px){
-	.tracker  {
-	  width: 100%;
+@media (max-width: 800px) {
+	.tracker {
+	  flex-direction: column;
 	}
-
-}
+  }

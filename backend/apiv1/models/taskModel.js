@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const Schema = mongoose.Schema; 
+const Schema = mongoose.Schema;
 
 const TaskSchema = new Schema({
     userId: {
@@ -7,24 +7,24 @@ const TaskSchema = new Schema({
         required: true,
     },
     taskName: {
-        type: String, 
+        type: String,
         required: true,
-    }, 
+    },
     priority: {
-        type: Number, 
-        required: true,  
-    }, 
+        type: Number,
+        required: true,
+    },
     estimatedPomodoros: {
-        type: Number, 
+        type: Number,
         required: true
-    }, 
+    },
     actualPomodoros: {
-        type: Number, 
+        type: Number,
         required: true,
         default: 0,
-    }, 
+    },
     notes: {
-        type: String, 
+        type: String,
         required: false
     },
     isCompleted: {

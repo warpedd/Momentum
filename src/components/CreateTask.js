@@ -33,13 +33,12 @@ const CreateTask = ({ onTaskListUpdated }) => {
             } else {
                 const token = user && await user.getIdToken();
                 const headers = token ? { authtoken: token } : {};
-                axios.post(`/apiv1/tasks/`, {
+                axios.post("http://localhost:5000/apiv1/tasks/", {
                     userId: token,
                     taskName: taskName,
                     priority: priority,
                     estimatedPomodoros: estPoms,
-                    notes: notes,
-                    status: false
+                    notes: notes
                 }, { headers });
 
                 // Clear form and trigger task list reload

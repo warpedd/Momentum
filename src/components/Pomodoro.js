@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback} from 'react';
 import Button from './Button';
 import CountdownTimer from './Countdown';
 import '../styles/Pomodoro.css';
@@ -20,7 +20,19 @@ const Pomodoro = ({
     const [display, setDisplay] = useState(DisplayTimer.POMODORO);
     const [completedPomodoros, setCompletedPomodoros] = useState(0);
 
-    const switchToNextBreak = () => {
+    const switchPomodoro = () => {
+        setDisplay(DisplayTimer.POMODORO);
+    };
+
+    const switchShortBreak = useCallback(() => {
+        setDisplay(DisplayTimer.SHORTBREAK);
+    }, []);
+
+    const switchLongBreak = useCallback(() => {
+        setDisplay(DisplayTimer.LONGBREAK);
+    }, []);
+
+    const switchToNextBreak  = useCallback(() => {
         console.log('switchToNextBreak called');
         console.log('completedPomodoros:', completedPomodoros);
         if (completedPomodoros > 0 && completedPomodoros % pomodorosBeforeLongBreak === 0) {
@@ -30,7 +42,8 @@ const Pomodoro = ({
             console.log('Switching to Short Break');
             switchShortBreak();
         }
-    };
+    }, [completedPomodoros, pomodorosBeforeLongBreak, switchLongBreak, switchShortBreak]);
+
     
 
     const handlePomodoroComplete = () => {
@@ -66,19 +79,6 @@ const Pomodoro = ({
             switchPomodoro();
         }
     }, [completedPomodoros, pomodorosBeforeLongBreak, autoStartBreak, autoStartPomodoro, display, switchToNextBreak]);
-    
-
-    const switchPomodoro = () => {
-        setDisplay(DisplayTimer.POMODORO);
-    };
-
-    const switchShortBreak = () => {
-        setDisplay(DisplayTimer.SHORTBREAK);
-    };
-
-    const switchLongBreak = () => {
-        setDisplay(DisplayTimer.LONGBREAK);
-    };
 
     return (
         <div className='wrapper'>

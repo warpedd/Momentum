@@ -42,6 +42,41 @@ const createTask = async (req, res) => {
     }
 };
 
+// Controller function for updating a task
+const updateTask = async (req, res) => {
+    const id = req.params.id;
+    const { action } = req.body;
+
+    try {
+        const task = await taskModel.findById(id);
+
+        if (!task) {
+            return res.status(404).json({ error: 'Task not found.' });
+        }
+
+        switch (action) {
+            case 'incrementPomodoros':
+                task.actualPomodoros += 1;
+                break;
+            case 'toggleCompletion':
+                task.isCompleted = !task.isCompleted;
+                break;
+            case 'updateAll':
+                // Update all properties based on the request body
+                Object.assign(task, req.body);
+                break;
+            default:
+                return res.status(400).json({ error: 'Invalid action.' });
+        }
+
+        await task.save();
+        res.status(200).json({ message: 'Task updated successfully.' });
+    } catch (error) {
+        console.error('Error updating task:', error);
+        res.status(500).json({ error: 'Failed to update task.' });
+    }
+};
+
 // Controller function for deleting a task
 const deleteTask = async (req, res) => {
     let id = req.params.id;
@@ -58,14 +93,9 @@ const deleteTask = async (req, res) => {
     }
 }
 
-// const incrementPomodoros = async (req, res) => {
-//     try {
-//         const { name } = req.params; 
-//     }
-// }; 
-
 module.exports = {
     listTasks,
     createTask,
+    updateTask,
     deleteTask
 };

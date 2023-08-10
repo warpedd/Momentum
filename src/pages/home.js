@@ -28,25 +28,35 @@ function Home({ pomodoroDur, shortBreakDur, longBreakDur,
             setTasks(newTaskList);
         }
 
+
         // Generate the task lists we feed into lower level components and then reset our trigger callback
         if (user || tasksChanged) {
             loadTaskInfo();
-            incompleteTaskList();
             setTasksChanged(false);
         }
     }, [user, tasksChanged]);
 
+    // Trigger generation of any filtered task lists on change to tasks
+    useEffect(() => {
+        incompleteTaskList();
+    }, [tasks]);
+
+    function incompleteTaskList() {
+
+        let incompleteTasks = tasks.filter((elem) => !elem.isCompleted)
+        console.log("Home page incompleteTasks: ", incompleteTasks)
+        setIncTasks(incompleteTasks);
+    }
 
     // Callback for triggering update of the task list.
+    // Failing to include this will lead to tasks either failing to render on change
+    // or entirely.
     function updateTasksChanged() {
         setTasksChanged(true);
     }
 
     // Input to task list component - filter out here because lower level component is generic.
-    function incompleteTaskList() {
-        let incompleteTasks = tasks.filter((elem) => !elem.isCompleted)
-        setIncTasks(incompleteTasks);
-    }
+
     
     return (
         <>

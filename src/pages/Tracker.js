@@ -28,7 +28,7 @@ const Tracker = () => {
             loadTaskInfo();
             setTasksChanged(false);
         } else {
-            console.log("did not fetch tasks; user is not logged in.");
+            //console.log("did not fetch tasks; user is not logged in.");
         }
     }, [user, tasksChanged]);
 
@@ -66,7 +66,7 @@ const Tracker = () => {
             <div className="tracker">
                 <div className="chart-section">
                     <h2>Progress</h2>
-                    <PieChart width={400} height={400} padding={{right: 0, left: 0, top: 0,  bottom: 0}}>
+                    <PieChart width={400} height={400} padding={{ right: 0, left: 0, top: 0, bottom: 0 }}>
                         <Pie
                             dataKey="value"
                             isAnimationActive={false}
@@ -87,7 +87,7 @@ const Tracker = () => {
                                 />
                             ))}
                         </Pie>
-                        <Legend verticalAlign="top" height={36} layout="vertical"/>
+                        <Legend verticalAlign="top" height={36} layout="vertical" />
                     </PieChart>
                 </div>
                 <div className="tasks-section">

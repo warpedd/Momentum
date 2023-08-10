@@ -52,6 +52,13 @@ const CountdownTimer = ({duration, onComplete, autoStart}) => {
       }
     }, [autoStart]);
 
+    // Triggers reset of timer on duration prop change.
+    // This occurs when a user changes the timer duration in the settings pane.
+    useEffect(() => {
+      console.log('duration changed:', duration);
+      handleReset(); // Start the timer automatically
+    }, [duration]);
+
     useEffect(() => {
       if (secondsRemaining === 0) {
           onComplete(); // Call the provided callback function

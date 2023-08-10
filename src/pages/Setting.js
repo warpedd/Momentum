@@ -71,6 +71,8 @@ const Setting = ({
                                         <div>
                                             <input
                                                 type="number"
+                                                min={1}
+                                                max={60}
                                                 className="interval-input"
                                                 value={pomodoroDur}
                                                 onChange={(e) => setPomodoroDur(e.target.value)}
@@ -83,6 +85,8 @@ const Setting = ({
                                         <div>
                                             <input
                                                 type="number"
+                                                min={1}
+                                                max={30}
                                                 className="interval-input"
                                                 value={shortBreakDur}
                                                 onChange={(e) => setShortBreakDur(e.target.value)}
@@ -95,6 +99,8 @@ const Setting = ({
                                         <div>
                                             <input
                                                 type="number"
+                                                min={1}
+                                                max={60}
                                                 className="interval-input"
                                                 value={longBreakDur}
                                                 onChange={(e) => setLongBreakDur(e.target.value)}

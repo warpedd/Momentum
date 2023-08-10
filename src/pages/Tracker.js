@@ -56,6 +56,11 @@ const Tracker = () => {
         setIncTasks(incompleteTasks);
     }
 
+    // Callback for triggering update of the task list.
+    function updateTasksChanged() {
+        setTasksChanged(true);
+    }
+
     return (
         <div className="tracker-container">
             <div className="Tracker">
@@ -64,13 +69,13 @@ const Tracker = () => {
                         <header>
                             <h1>Tasks Remaining</h1>
                         </header>
-                        <TaskList tasks={incTasks} />
+                        <TaskList tasks={incTasks} markChange={updateTasksChanged} />
                     </div>
                     <div className="tracker-task-list">
                         <header>
                             <h1>Completed</h1>
                         </header>
-                        <TaskList tasks={compTasks} />
+                        <TaskList tasks={compTasks} markChange={updateTasksChanged} />
                     </div>
                 </div>
                 <div className="chart-section">

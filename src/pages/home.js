@@ -16,6 +16,7 @@ function Home({ pomodoroDur, shortBreakDur, longBreakDur,
     const [showAddTask, setShowAddTask] = useState(false)
     const [tasks, setTasks] = useState([]);
     const [tasksChanged, setTasksChanged] = useState(false);
+    const [incTasks, setIncTasks] = useState([]);
     const { user } = useUser();
 
     useEffect(() => {
@@ -27,8 +28,10 @@ function Home({ pomodoroDur, shortBreakDur, longBreakDur,
             setTasks(newTaskList);
         }
 
+        // Generate the task lists we feed into lower level components and then reset our trigger callback
         if (user || tasksChanged) {
             loadTaskInfo();
+            incompleteTaskList();
             setTasksChanged(false);
         }
     }, [user, tasksChanged]);
@@ -37,6 +40,12 @@ function Home({ pomodoroDur, shortBreakDur, longBreakDur,
     // Callback for triggering update of the task list.
     function updateTasksChanged() {
         setTasksChanged(true);
+    }
+
+    // Input to task list component - filter out here because lower level component is generic.
+    function incompleteTaskList() {
+        let incompleteTasks = tasks.filter((elem) => !elem.isCompleted)
+        setIncTasks(incompleteTasks);
     }
     
     return (
@@ -66,7 +75,7 @@ function Home({ pomodoroDur, shortBreakDur, longBreakDur,
                             />}
                     </header>
                     {showAddTask && <CreateTask onTaskListUpdated={updateTasksChanged} />}
-                    <TaskList tasks={tasks} markDelete={updateTasksChanged} />
+                    <TaskList tasks={incTasks} markChange={updateTasksChanged} />
                 </div>
             </div>
         </>

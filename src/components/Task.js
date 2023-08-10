@@ -8,9 +8,9 @@ import useUser from '../hooks/useUser'
 
 
 // markComplete - callback for handling task complete action
-// markDelete - callback for handline task delete action
+// markChange - callback for handline task delete action
 
-const Task = ({ task, markComplete, markDelete }) => {
+const Task = ({ task, markChange }) => {
     const { user } = useUser();
     const deleteTask = async (taskId) => {
         console.log(taskId);
@@ -21,7 +21,7 @@ const Task = ({ task, markComplete, markDelete }) => {
             await axios.delete(`http://localhost:5000/apiv1/tasks/${taskId}`, { headers });
 
             // Callback to trigger reload of task list.
-            markDelete();
+            markChange();
         } catch (error) {
             console.error('Error deleting task:', error);
         }
@@ -34,7 +34,9 @@ const Task = ({ task, markComplete, markDelete }) => {
             const body = { action };
 
             await axios.put(`http://localhost:5000/apiv1/tasks/${taskId}`, body, { headers });
+            
             // Update your task list or UI as needed
+            markChange();
         } catch (error) {
             console.error('Error updating task:', error);
         }
@@ -45,7 +47,8 @@ const Task = ({ task, markComplete, markDelete }) => {
             <div>
                 <h3>{task.taskName}{' '}</h3>
                 <div className="btn-container">
-                    <button className='complete-btn' onClick={() => completeTask(task._id, 'toggleCompletion')}> <FaCheck size={20} /></button>
+                    {!task.isCompleted ? <button className='complete-btn' onClick={() => completeTask(task._id, 'toggleCompletion')}> <FaCheck size={20} /></button> : false }
+                    
                     <span>     </span>
                     <button className='delete-btn' onClick={() => deleteTask(task._id)}><IoMdClose size={20} /></button>
                 </div>

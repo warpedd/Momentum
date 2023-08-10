@@ -13,7 +13,7 @@ import useUser from '../hooks/useUser'
 const Task = ({ task, markChange }) => {
     const { user } = useUser();
     const deleteTask = async (taskId) => {
-        console.log(taskId);
+        //console.log(taskId);
         try {
             const token = await user?.getIdToken();
             const headers = token ? { authtoken: token } : {};
@@ -34,7 +34,7 @@ const Task = ({ task, markChange }) => {
             const body = { action };
 
             await axios.put(`http://localhost:5000/apiv1/tasks/${taskId}`, body, { headers });
-            
+
             // Update your task list or UI as needed
             markChange();
         } catch (error) {
@@ -47,8 +47,8 @@ const Task = ({ task, markChange }) => {
             <div>
                 <h3>{task.taskName}{' '}</h3>
                 <div className="btn-container">
-                    {!task.isCompleted ? <button className='complete-btn' onClick={() => completeTask(task._id, 'toggleCompletion')}> <FaCheck size={20} /></button> : false }
-                    
+                    {!task.isCompleted ? <button className='complete-btn' onClick={() => completeTask(task._id, 'toggleCompletion')}> <FaCheck size={20} /></button> : false}
+
                     <span>     </span>
                     <button className='delete-btn' onClick={() => deleteTask(task._id)}><IoMdClose size={20} /></button>
                 </div>

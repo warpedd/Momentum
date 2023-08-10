@@ -8,7 +8,7 @@ import Button from '../components/Button';
 import useUser from '../hooks/useUser'
 
 // returns the homepage for momentum
-function Home({ pomodoroDur, shortBreakDur, longBreakDur, 
+function Home({ pomodoroDur, shortBreakDur, longBreakDur,
     autoStartBreak, autoStartPomodoro,
     pomodorosBeforeLongBreak, onSwitchShortBreak, onSwitchLongBreak }) {
 
@@ -44,7 +44,7 @@ function Home({ pomodoroDur, shortBreakDur, longBreakDur,
     function incompleteTaskList() {
 
         let incompleteTasks = tasks.filter((elem) => !elem.isCompleted)
-        console.log("Home page incompleteTasks: ", incompleteTasks)
+        //console.log("Home page incompleteTasks: ", incompleteTasks)
         setIncTasks(incompleteTasks);
     }
 
@@ -57,18 +57,18 @@ function Home({ pomodoroDur, shortBreakDur, longBreakDur,
 
     // Input to task list component - filter out here because lower level component is generic.
 
-    
+
     return (
         <>
-            <Pomodoro 
-            pomodoroDur={pomodoroDur} 
-            shortBreakDur={shortBreakDur} 
-            longBreakDur={longBreakDur}
-            autoStartBreak={autoStartBreak} 
-            autoStartPomodoro={autoStartPomodoro} 
-            pomodorosBeforeLongBreak={pomodorosBeforeLongBreak} 
-            switchShortBreak={onSwitchShortBreak}
-            switchLongBreak={onSwitchLongBreak}/>
+            <Pomodoro
+                pomodoroDur={pomodoroDur}
+                shortBreakDur={shortBreakDur}
+                longBreakDur={longBreakDur}
+                autoStartBreak={autoStartBreak}
+                autoStartPomodoro={autoStartPomodoro}
+                pomodorosBeforeLongBreak={pomodorosBeforeLongBreak}
+                switchShortBreak={onSwitchShortBreak}
+                switchLongBreak={onSwitchLongBreak} />
             <div className='task-background'>
                 <div className='task-container'>
                     <header className='task-list-header'>

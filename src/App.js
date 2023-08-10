@@ -4,16 +4,17 @@ import Navbar from "./components/Navbar";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Home from "./pages/home";
 import Tracker from "./pages/Tracker";
-import Music from "./pages/Music";
 import Setting from "./pages/Setting";
 import { Login } from "./pages/Login";
 import { Register } from "./pages/Register";
 import useUser from './hooks/useUser';
+import ForgotPassword from "./pages/ForgotPassword";
 
 // Style imports
 import './styles/ButtonGeneric.css'
 import './styles/Tasks.css'
 import './App.css'
+
 // import { setSelectionRange } from "@testing-library/user-event/dist/utils";
 
 const App = () => {
@@ -52,21 +53,17 @@ const App = () => {
                 <Router>
                     <Navbar onSettingsClick={handleSettingsClick}/>
                     <Switch>
-                        <Route path="/" component={Home} exact>
-                            <div className="outer-container">
-                                <div className="inner-container">
-                                    <Home 
-                                        onSettingsClick={handleSettingsClick}
-                                        pomodoroDur={pomodoroDur} 
-                                        shortBreakDur={shortBreakDur} 
-                                        longBreakDur={longBreakDur}
-                                        autoStartBreak={autoStartBreak}
-                                        autoStartPomodoro={autoStartPomodoro}
-                                        autoSwitchTask={autoSwitchTask}
-                                        pomodorosBeforeShortBreak={pomodorosBeforeShortBreak}
-                                        pomodorosBeforeLongBreak={pomodorosBeforeLongBreak}/>
-                                </div>
-                            </div>
+                        <Route path="/" Component={Home} exact>
+                            <Home 
+                                onSettingsClick={handleSettingsClick}
+                                pomodoroDur={pomodoroDur} 
+                                shortBreakDur={shortBreakDur} 
+                                longBreakDur={longBreakDur}
+                                autoStartBreak={autoStartBreak}
+                                autoStartPomodoro={autoStartPomodoro}
+                                autoSwitchTask={autoSwitchTask}
+                                pomodorosBeforeShortBreak={pomodorosBeforeShortBreak}
+                                pomodorosBeforeLongBreak={pomodorosBeforeLongBreak}/>
                         </Route>
                         <Route path="/tracker" Component={Tracker} exact>
                             { user ? <Tracker/> : 
@@ -74,11 +71,11 @@ const App = () => {
                                     { currentForm === "login" ? <Login onFormSwitch={toggleForm} /> : <Register onFormSwitch={toggleForm} /> }
                                 </div> }
                         </Route>
-                        <Route path="/music" Component={Music} exact>
-                            <Music/>
-                        </Route>
                         <Route path="/login" Component={Login} exact>
                             { currentForm === "login" ? <Login onFormSwitch={toggleForm} /> : <Register onFormSwitch={toggleForm} /> }
+                        </Route>
+                        <Route path="/forgotpassword" Component={ForgotPassword} exact>
+                            <ForgotPassword/>
                         </Route>
                     </Switch>
                 </Router>

@@ -27,8 +27,6 @@ const Tracker = () => {
         if (user || tasksChanged) {
             loadTaskInfo();
             setTasksChanged(false);
-        } else {
-            //console.log("did not fetch tasks; user is not logged in.");
         }
     }, [user, tasksChanged]);
 

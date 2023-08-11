@@ -13,7 +13,6 @@ import useUser from '../hooks/useUser'
 const Task = ({ task, markChange }) => {
     const { user } = useUser();
     const deleteTask = async (taskId) => {
-        //console.log(taskId);
         try {
             const token = await user?.getIdToken();
             const headers = token ? { authtoken: token } : {};

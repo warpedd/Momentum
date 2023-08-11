@@ -44,7 +44,6 @@ function Home({ pomodoroDur, shortBreakDur, longBreakDur,
     function incompleteTaskList() {
 
         let incompleteTasks = tasks.filter((elem) => !elem.isCompleted)
-        //console.log("Home page incompleteTasks: ", incompleteTasks)
         setIncTasks(incompleteTasks);
     }
 

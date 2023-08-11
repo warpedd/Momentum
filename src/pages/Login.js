@@ -18,8 +18,15 @@ export const Login = (props) => {
             await signInWithEmailAndPassword(getAuth(), email, pass);
             history.push("/");
         } catch (error) {
-            // If user is not authenticated, this sets the error using what is caught from firebase
-            setError(error.message);
+            let errorMessage = "An error occurred. Please try again.";
+            if (error.code === "auth/user-not-found") {
+                errorMessage = "User not found. Please check your email.";
+            } else if (error.code === "auth/wrong-password") {
+                errorMessage = "Incorrect password. Please try again.";
+            } else if (error.code === "auth/invalid-email") {
+                errorMessage = "Invalid email address.";
+            }
+            setError(errorMessage);
         }
     }
 

@@ -33,13 +33,9 @@ const Pomodoro = ({
     }, []);
 
     const switchToNextBreak = useCallback(() => {
-        //console.log('switchToNextBreak called');
-        //console.log('completedPomodoros:', completedPomodoros);
         if (completedPomodoros > 0 && completedPomodoros % pomodorosBeforeLongBreak === 0) {
-            console.log('Switching to Long Break');
             switchLongBreak();
         } else {
-            //console.log('Switching to Short Break');
             switchShortBreak();
         }
     }, [completedPomodoros, pomodorosBeforeLongBreak, switchLongBreak, switchShortBreak]);
@@ -47,35 +43,24 @@ const Pomodoro = ({
 
 
     const handlePomodoroComplete = () => {
-        //console.log("Pomodoro completed. Incrementing completedPomodoros...");
         setCompletedPomodoros((prevCount) => prevCount + 1);
         switchToNextBreak();
     };
 
 
     const handleTimerCompletion = () => {
-        //console.log("handleTimerCompletion called");
         if (display === DisplayTimer.POMODORO) {
-            //console.log("Pomodoro completed. Incrementing completedPomodoros...");
             handlePomodoroComplete();
         } else {
-            //console.log("Calling switchToNextBreak from handleTimerCompletion");
             switchPomodoro(); // Switch back to the pomodoro
         }
     };
 
     useEffect(() => {
-        // console.log("useEffect triggered");
-        // console.log("autoStartBreak:", autoStartBreak);
-        // console.log("autoStartPomodoro:", autoStartPomodoro);
-        // console.log("completedPomodoros:", completedPomodoros);
-        // console.log("pomodorosBeforeLongBreak:", pomodorosBeforeLongBreak);
 
         if (autoStartBreak && completedPomodoros > 0 && display !== DisplayTimer.POMODORO) {
-            //console.log("Calling switchToNextBreak");
             switchToNextBreak();
         } else if (autoStartPomodoro && display !== DisplayTimer.POMODORO) {
-            //console.log("Switching to Pomodoro");
             switchPomodoro();
         }
     }, [completedPomodoros, pomodorosBeforeLongBreak, autoStartBreak, autoStartPomodoro, display, switchToNextBreak]);

@@ -20,7 +20,6 @@ const Setting = ({
     pomodorosBeforeLongBreak,
     setPomodorosBeforeLongBreak
 }) => {
-    //console.log("Settings");
 
     const SettingLabels = [
         { label: "Set your timer for", settings: ["Pomodoro", "Short Break", "Long Break"] },

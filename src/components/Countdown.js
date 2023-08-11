@@ -8,6 +8,12 @@ const STATUS = {
 }
 
 const CountdownTimer = ({duration, onComplete, autoStart}) => {
+    // Triggers reset of timer on duration prop change.
+    // This occurs when a user changes the timer duration in the settings pane.
+    useEffect(() => {
+      console.log('duration changed:', duration);
+      handleReset(); // Start the timer automatically
+    }, [duration]);
 
     // State management function declarations
     const [secondsRemaining, setSecondsRemaining] = useState(duration)
@@ -51,13 +57,6 @@ const CountdownTimer = ({duration, onComplete, autoStart}) => {
         handleStart(); // Start the timer automatically
       }
     }, [autoStart]);
-
-    // Triggers reset of timer on duration prop change.
-    // This occurs when a user changes the timer duration in the settings pane.
-    useEffect(() => {
-      console.log('duration changed:', duration);
-      handleReset(); // Start the timer automatically
-    }, [duration]);
 
     useEffect(() => {
       if (secondsRemaining === 0) {
